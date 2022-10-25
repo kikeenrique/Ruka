@@ -7,13 +7,20 @@ public struct App {
         case doNothing
     }
 
-    public init(controller: UIViewController, failureBehavior: FailureBehavior = .failTest) {
+    public init(window: UIWindow = UIWindow(),
+                controller: UIViewController,
+                failureBehavior: FailureBehavior = .failTest) {
+        self.window = window
         self.failureBehavior = failureBehavior
 
         load(controller: controller)
     }
 
-    public init(storyboard: String, identifier: String, failureBehavior: FailureBehavior = .failTest) {
+    public init(window: UIWindow = UIWindow(),
+                storyboard: String,
+                identifier: String,
+                failureBehavior: FailureBehavior = .failTest) {
+        self.window = window
         self.failureBehavior = failureBehavior
 
         let storyboard = UIStoryboard(name: storyboard, bundle: nil)
@@ -134,7 +141,7 @@ public struct App {
     }
 
     private let failureBehavior: FailureBehavior
-    private let window = UIWindow()
+    private let window: UIWindow!
     private var controller: UIViewController! { visibleViewController(from: window.rootViewController) }
 
     private func load(controller: UIViewController) {
