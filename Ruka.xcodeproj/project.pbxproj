@@ -159,14 +159,14 @@
 			children = (
 				84E75E3A258039E7001F8290 /* Host App */,
 				OBJ_11 /* RukaTests */,
-				OBJ_14 /* Support */,
 			);
-			name = Tests;
-			sourceTree = SOURCE_ROOT;
+			path = Tests;
+			sourceTree = "<group>";
 		};
 		OBJ_11 /* RukaTests */ = {
 			isa = PBXGroup;
 			children = (
+				OBJ_14 /* Support */,
 				OBJ_12 /* Info.plist */,
 				OBJ_13 /* Tests.swift */,
 			);
