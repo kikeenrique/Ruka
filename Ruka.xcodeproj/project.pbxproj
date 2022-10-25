@@ -40,6 +40,7 @@
 		84E75E43258039E7001F8290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E75E41258039E7001F8290 /* Main.storyboard */; };
 		84E75E45258039E8001F8290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E75E44258039E8001F8290 /* Assets.xcassets */; };
 		84E75E48258039E8001F8290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E75E46258039E8001F8290 /* LaunchScreen.storyboard */; };
+		C01EEAAD2908944400B0CE34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01EEAAC2908944400B0CE34 /* XCTest.framework */; platformFilter = ios; };
 		F2D972DF258A876C0034F592 /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972DE258A876C0034F592 /* SecondTabViewController.swift */; };
 		F2D972E6258AACB10034F592 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972E5258AACB10034F592 /* TabBarViewController.swift */; };
 		F2D972ED258AB0360034F592 /* NestedModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972EC258AB0360034F592 /* NestedModalViewController.swift */; };
@@ -101,6 +102,7 @@
 		84E75E44258039E8001F8290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84E75E47258039E8001F8290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84E75E49258039E8001F8290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C01EEAAC2908944400B0CE34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F2D972DE258A876C0034F592 /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
 		F2D972E5258AACB10034F592 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F2D972EC258AB0360034F592 /* NestedModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedModalViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				C01EEAAD2908944400B0CE34 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +155,14 @@
 				84E75E41258039E7001F8290 /* Main.storyboard */,
 			);
 			path = "Host App";
+			sourceTree = "<group>";
+		};
+		C01EEAAB2908944300B0CE34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C01EEAAC2908944400B0CE34 /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		OBJ_10 /* Tests */ = {
@@ -200,6 +211,7 @@
 				841FE71C25803AF000CBB8BF /* Ruka.framework */,
 				841FE71D25803AF000CBB8BF /* RukaTests.xctest */,
 				841FE71E25803AF000CBB8BF /* Host App.app */,
+				C01EEAAB2908944300B0CE34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -499,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Host App/Info.plist";
+				INFOPLIST_FILE = "Tests/Host App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -559,7 +571,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Host App/Info.plist";
+				INFOPLIST_FILE = "Tests/Host App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
