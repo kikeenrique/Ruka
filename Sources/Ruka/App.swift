@@ -30,7 +30,9 @@ public struct App {
 
     // MARK: UILabel
 
-    public func label(_ identifier: String, file: StaticString = #filePath, line: UInt = #line) throws -> UILabel? {
+    public func label(_ identifier: String,
+                      file: StaticString = #filePath,
+                      line: UInt = #line) throws -> UILabel? {
         let labels = controller.view.findViews(subclassOf: UILabel.self)
         let label = labels.first(where: { $0.isIdentifiable(by: identifier, in: controller) })
 
@@ -42,7 +44,9 @@ public struct App {
 
     // MARK: UIButton
 
-    public func button(_ identifier: String, file: StaticString = #filePath, line: UInt = #line) throws -> UIButton? {
+    public func button(_ identifier: String,
+                       file: StaticString = #filePath,
+                       line: UInt = #line) throws -> UIButton? {
         let buttons = controller.view.findViews(subclassOf: UIButton.self)
         let button = buttons.first(where: { $0.isIdentifiable(by: identifier, in: controller) })
 
@@ -52,7 +56,9 @@ public struct App {
         return button
     }
 
-    public func tapButton(title: String, file: StaticString = #filePath, line: UInt = #line) throws {
+    public func tapButton(title: String,
+                          file: StaticString = #filePath,
+                          line: UInt = #line) throws {
         guard let button = try button(title), button.isEnabled else { return }
 
         let windowBeforeTap = window
@@ -69,7 +75,9 @@ public struct App {
         controller.view.findViews(subclassOf: UITableView.self).first
     }
 
-    public func cell(containingText text: String, file: StaticString = #filePath, line: UInt = #line) throws -> UITableViewCell? {
+    public func cell(containingText text: String,
+                     file: StaticString = #filePath,
+                     line: UInt = #line) throws -> UITableViewCell? {
         let tableViewCell = tableView?.visibleCells.first(where: { cell -> Bool in
             cell.findViews(subclassOf: UILabel.self).contains { $0.text == text }
         })
@@ -82,7 +90,9 @@ public struct App {
 
     // MARK: UISwitch
 
-    public func `switch`(_ identifier: String, file: StaticString = #filePath, line: UInt = #line) throws -> UISwitch? {
+    public func `switch`(_ identifier: String,
+                         file: StaticString = #filePath,
+                         line: UInt = #line) throws -> UISwitch? {
         let switches = controller.view.findViews(subclassOf: UISwitch.self)
         let `switch` = switches.first(where: { $0.isIdentifiable(by: identifier, in: controller) })
 
@@ -94,7 +104,9 @@ public struct App {
 
     // MARK: UIStepper
 
-    public func stepper(_ identifier: String, file: StaticString = #filePath, line: UInt = #line) throws -> UIStepper? {
+    public func stepper(_ identifier: String,
+                        file: StaticString = #filePath,
+                        line: UInt = #line) throws -> UIStepper? {
         let steppers = controller.view.findViews(subclassOf: UIStepper.self)
         let stepper = steppers.first(where: { $0.isIdentifiable(by: identifier, in: controller) })
 
@@ -106,7 +118,9 @@ public struct App {
 
     // MARK: UISlider
 
-    public func slider(_ identifier: String, file: StaticString = #filePath, line: UInt = #line) throws -> UISlider? {
+    public func slider(_ identifier: String,
+                       file: StaticString = #filePath,
+                       line: UInt = #line) throws -> UISlider? {
         let sliders = controller.view.findViews(subclassOf: UISlider.self)
         let slider = sliders.first(where: { $0.isIdentifiable(by: identifier, in: controller) })
 
@@ -118,7 +132,9 @@ public struct App {
 
     // MARK: UITextField
 
-    public func textField(_ identifier: String, file: StaticString = #filePath, line: UInt = #line) throws -> UITextField? {
+    public func textField(_ identifier: String,
+                          file: StaticString = #filePath,
+                          line: UInt = #line) throws -> UITextField? {
         let textFields = controller.view.findViews(subclassOf: UITextField.self)
         let textField = textFields.first(where: { $0.isIdentifiable(by: identifier, in: controller) })
 
