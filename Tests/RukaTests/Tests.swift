@@ -392,4 +392,15 @@ class Tests: XCTestCase {
         let app = App(controller: RootViewController(), failureBehavior: .doNothing)
         XCTAssertNil(try app.label("Missing element"))
     }
+
+    func test_aMissingElement_fails() throws {
+        let app = App(controller: RootViewController(), failureBehavior: .failTest)
+        let options = XCTExpectedFailure.Options()
+        options.issueMatcher = { issue in
+            issue.type == .assertionFailure &&
+                          issue.compactDescription.contains("Could not find label with text")
+        }
+        XCTExpectFailure("This test is expected to fail.", options: options)
+        XCTAssertNil(try app.label("Missing element"))
+    }
 }
