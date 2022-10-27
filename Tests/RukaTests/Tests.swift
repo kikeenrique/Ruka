@@ -398,7 +398,7 @@ class Tests: XCTestCase {
         let options = XCTExpectedFailure.Options()
         options.issueMatcher = { issue in
             issue.type == .assertionFailure &&
-                          issue.compactDescription.contains("Could not find label with text")
+                          issue.compactDescription.contains("Could not find view with")
         }
         XCTExpectFailure("This test is expected to fail.", options: options)
         XCTAssertNil(try app.label("Missing element"))
