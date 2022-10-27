@@ -4,9 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "Ruka",
-    platforms: [.iOS(.v15),
+    platforms: [.iOS(.v14),
                 .watchOS(.v8),
-                .tvOS(.v15),
+                .tvOS(.v14),
                 .macCatalyst(.v13)],
     products: [
         .library(
