@@ -26,12 +26,13 @@ public struct App {
 
     public init(window: UIWindow = UIWindow(),
                 storyboard: String,
+                bundle: Bundle?,
                 identifier: String,
                 failureBehavior: FailureBehavior = .failTest) {
         self.window = window
         self.failureBehavior = failureBehavior
 
-        let storyboard = UIStoryboard(name: storyboard, bundle: nil)
+        let storyboard = UIStoryboard(name: storyboard, bundle: bundle)
         let controller = storyboard.instantiateViewController(withIdentifier: identifier)
         load(controller: controller)
     }
