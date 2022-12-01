@@ -1,4 +1,10 @@
+#if canImport(UIKit)
 import UIKit
+#endif
+#if canImport(AppKit)
+import AppKit
+#endif
+
 
 class FormViewController: UIViewController {
     private let stackView = UIStackView()

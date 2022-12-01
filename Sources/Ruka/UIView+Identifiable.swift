@@ -1,4 +1,10 @@
+#if canImport(UIKit)
 import UIKit
+#endif
+#if canImport(AppKit)
+import AppKit
+#endif
+
 
 extension UIView {
     func isIdentifiable(by identifier: String, in controller: UIViewController) -> Bool {
