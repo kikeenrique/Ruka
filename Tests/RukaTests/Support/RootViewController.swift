@@ -1,6 +1,18 @@
 import UIKit
 
 class RootViewController: UIViewController {
+    static let labelText = "Label text"
+    static let labelHiddenText = "Hidden label text"
+    static let labelA11yText = "a11y labeled label"
+    static let labelA11yIdentified = "a11y identified label"
+    static let labelOffScreen =  "Off screen label text"
+    static let buttonTitle = "Button title"
+    static let buttonTitleHidden = "Hidden button title"
+    static let disableButtonTitle = "Disabled button title"
+    static let labelTextChanged = "Changed label text"
+
+    static let offScreenButtonTitle = "Off screen button title"
+
     private let label = UILabel()
     private let stackView = UIStackView()
 
@@ -30,26 +42,26 @@ class RootViewController: UIViewController {
     }
 
     private func installLabels() {
-        label.text = "Label text"
+        label.text = RootViewController.labelText
         stackView.addArrangedSubview(label)
-        _ = addLabel(text: "Hidden label text", isHidden: true)
+        _ = addLabel(text: RootViewController.labelHiddenText, isHidden: true)
 
         let a11yLabeledLabel = addLabel(text: "")
-        a11yLabeledLabel.accessibilityLabel = "a11y labeled label"
+        a11yLabeledLabel.accessibilityLabel = RootViewController.labelA11yText
 
         let a11yIdentifiedLabel = addLabel(text: "")
-        a11yIdentifiedLabel.accessibilityIdentifier = "a11y identified label"
+        a11yIdentifiedLabel.accessibilityIdentifier = RootViewController.labelA11yIdentified
 
         let offScreenLabel = UILabel()
-        offScreenLabel.text = "Off screen label text"
+        offScreenLabel.text = RootViewController.labelOffScreen
         view.addSubview(offScreenLabel)
         offScreenLabel.frame.origin.y = -100
     }
 
     private func installButtons() {
-        _ = addButton(title: "Button title")
-        _ = addButton(title: "Hidden button title", isHidden: true)
-        _ = addButton(title: "Disabled button title", isEnabled: false)
+        _ = addButton(title: RootViewController.buttonTitle)
+        _ = addButton(title: RootViewController.buttonTitleHidden, isHidden: true)
+        _ = addButton(title: RootViewController.disableButtonTitle, isEnabled: false)
 
         _ = addButton(title: "Push view controller", action: #selector(pushViewController))
         _ = addButton(title: "Pop view controller", action: #selector(popViewController))
@@ -64,7 +76,7 @@ class RootViewController: UIViewController {
         a11yIdentifiedButton.accessibilityIdentifier = "a11y identified button"
 
         let offScreenButton = UIButton()
-        offScreenButton.setTitle("Off screen button title", for: .normal)
+        offScreenButton.setTitle(RootViewController.offScreenButtonTitle, for: .normal)
         view.addSubview(offScreenButton)
         offScreenButton.frame.origin.y = -100
     }
@@ -88,7 +100,7 @@ class RootViewController: UIViewController {
     }
 
     @objc private func changeLabelText() {
-        label.text = "Changed label text"
+        label.text = RootViewController.labelTextChanged
     }
 
     @objc private func pushViewController() {
@@ -106,7 +118,7 @@ class RootViewController: UIViewController {
     @objc private func showAlert() {
         let alert = UIAlertController(title: "Alert title", message: "Alert message.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
-            self?.label.text = "Changed label text"
+            self?.label.text = RootViewController.labelTextChanged
         }))
         present(alert, animated: true)
     }

@@ -9,7 +9,9 @@ class Tests: XCTestCase {
     // MARK: Storyboard
 
     func test_findsAStoryboardBackedController() throws {
-        let app = App(storyboard: "Main", identifier: "UIViewController identifier")
+        let app = App(storyboard: "Main",
+                      bundle: .module,
+                      identifier: "UIViewController identifier")
         XCTAssertNotNil(try app.label("Storyboard label text"))
     }
 
@@ -19,29 +21,29 @@ class Tests: XCTestCase {
         let controller = RootViewController()
         let app = App(controller: controller)
 
-        let label = try app.label("Label text")
+        let label = try app.label(RootViewController.labelText)
         XCTAssertNotNil(label)
         XCTAssertEqual(label?.superview?.superview, controller.view)
     }
 
     func test_findsALabelViaTheAccessibilityLabel() throws {
         let app = App(controller: RootViewController())
-        XCTAssertNotNil(try app.label("a11y labeled label"))
+        XCTAssertNotNil(try app.label(RootViewController.labelA11yText))
     }
 
     func test_findsALabelViaTheAccessibilityIdentifier() throws {
         let app = App(controller: RootViewController())
-        XCTAssertNotNil(try app.label("a11y identified label"))
+        XCTAssertNotNil(try app.label(RootViewController.labelA11yIdentified))
     }
 
     func test_doesNotFindAHiddenLabel() throws {
         let app = App(controller: RootViewController(), failureBehavior: .doNothing)
-        XCTAssertNil(try app.label("Hidden label text"))
+        XCTAssertNil(try app.label(RootViewController.labelHiddenText))
     }
 
     func test_doesNotFindALabelOffTheScreen() throws {
         let app = App(controller: RootViewController(), failureBehavior: .doNothing)
-        XCTAssertNil(try app.label("Off screen label text"))
+        XCTAssertNil(try app.label(RootViewController.labelOffScreen))
     }
 
     // MARK: UIButton
@@ -50,7 +52,7 @@ class Tests: XCTestCase {
         let controller = RootViewController()
         let app = App(controller: controller)
 
-        let button = try app.button("Button title")
+        let button = try app.button(RootViewController.buttonTitle)
         XCTAssertNotNil(button)
         XCTAssertEqual(button?.superview?.superview, controller.view)
     }
@@ -69,30 +71,30 @@ class Tests: XCTestCase {
         let controller = RootViewController()
         let app = App(controller: controller, failureBehavior: .doNothing)
 
-        XCTAssertNil(try app.button("Hidden button title"))
+        XCTAssertNil(try app.button(RootViewController.buttonTitleHidden))
     }
 
     func test_doesNotFindAButtonOffTheScreen() throws {
         let app = App(controller: RootViewController(), failureBehavior: .doNothing)
-        XCTAssertNil(try app.button("Off screen button title"))
+        XCTAssertNil(try app.button(RootViewController.offScreenButtonTitle))
     }
 
     func test_tapsAButton() throws {
         let controller = RootViewController()
         let app = App(controller: controller)
 
-        try app.tapButton(title: "Button title")
+        try app.tapButton(title: RootViewController.buttonTitle)
 
-        _ = try app.label("Changed label text")
+        _ = try app.label(RootViewController.labelTextChanged)
     }
 
     func test_doesNotTapADisabledButton() throws {
         let controller = RootViewController()
         let app = App(controller: controller, failureBehavior: .doNothing)
 
-        try app.tapButton(title: "Disabled button title")
+        try app.tapButton(title: RootViewController.disableButtonTitle)
 
-        XCTAssertNil(try app.label("Changed label text"))
+        XCTAssertNil(try app.label(RootViewController.labelTextChanged))
     }
 
     // MARK: UINavigationController
@@ -192,7 +194,7 @@ class Tests: XCTestCase {
 
         app.alertViewController?.tapButton(title: "Dismiss")
         XCTAssertNotNil(try app.button("Show alert"))
-        XCTAssertNotNil(try app.label("Changed label text"))
+        XCTAssertNotNil(try app.label(RootViewController.labelTextChanged))
     }
 
     // MARK: UITableView
@@ -206,14 +208,14 @@ class Tests: XCTestCase {
         let app = App(controller: TableViewController(), failureBehavior: .doNothing)
         XCTAssertNotNil(try app.cell(containingText: "Three"))
 
-        XCTAssertNotNil(try app.label("Label text"))
-        XCTAssertNil(try app.cell(containingText: "Label text"))
+        XCTAssertNotNil(try app.label(TableViewController.labelText))
+        XCTAssertNil(try app.cell(containingText: TableViewController.labelText))
     }
 
     func test_tapsACell() throws {
         let app = App(controller: TableViewController())
         try app.cell(containingText: "Three")?.tap()
-        XCTAssertNotNil(try app.label("Changed label text"))
+        XCTAssertNotNil(try app.label(RootViewController.labelTextChanged))
     }
 
     // MARK: UISwitch

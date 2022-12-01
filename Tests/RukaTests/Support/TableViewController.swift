@@ -1,6 +1,9 @@
 import UIKit
 
 class TableViewController: UIViewController {
+    static let labelText = "Label text"
+    static let labelTextChanged = "Changed label text"
+
     private let label = UILabel()
     private let tableView = UITableView()
 
@@ -18,7 +21,7 @@ class TableViewController: UIViewController {
     }
 
     private func installLabel() {
-        label.text = "Label text"
+        label.text = TableViewController.labelText
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
     }
@@ -56,7 +59,7 @@ extension TableViewController: UITableViewDataSource {
 
 extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        label.text = "Changed label text"
+        label.text = TableViewController.labelTextChanged
     }
 }
 
