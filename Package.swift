@@ -22,7 +22,10 @@ let package = Package(
         ),
         .testTarget(
             name: "RukaTests",
-            dependencies: ["Ruka"]
+            dependencies: ["Ruka"],
+            resources: [
+                .process("Resources")
+            ]
         ),
     ]
 )
