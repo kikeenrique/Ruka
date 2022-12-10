@@ -25,7 +25,6 @@
 		84146B172580386900A9768A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B112580386900A9768A /* App.swift */; };
 		84146B182580386900A9768A /* UIAlertController+ActionInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B122580386900A9768A /* UIAlertController+ActionInvoker.swift */; };
 		84146B192580386900A9768A /* UIView+SubviewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B132580386900A9768A /* UIView+SubviewFinder.swift */; };
-		841FE76F2580435600CBB8BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841FE769258040B200CBB8BF /* Main.storyboard */; };
 		841FE7762580457900CBB8BF /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FE7752580457900CBB8BF /* ModalViewController.swift */; };
 		841FE7822581408300CBB8BF /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FE7812581408300CBB8BF /* UITextField.swift */; };
 		84584DCE258E83150098FDEE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84584DCD258E83150098FDEE /* Animation.swift */; };
@@ -86,7 +85,6 @@
 		841FE71C25803AF000CBB8BF /* Ruka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ruka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE71D25803AF000CBB8BF /* RukaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RukaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE71E25803AF000CBB8BF /* Host App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Host App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		841FE769258040B200CBB8BF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		841FE7752580457900CBB8BF /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		841FE7812581408300CBB8BF /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		84584DCD258E83150098FDEE /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -103,6 +101,7 @@
 		84E75E47258039E8001F8290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84E75E49258039E8001F8290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C01EEAAC2908944400B0CE34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C08C5E4229447A530064A69E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F2D972DE258A876C0034F592 /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
 		F2D972E5258AACB10034F592 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F2D972EC258AB0360034F592 /* NestedModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedModalViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +164,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C08C5E4129447A530064A69E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C08C5E4229447A530064A69E /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,18 +184,17 @@
 		OBJ_11 /* RukaTests */ = {
 			isa = PBXGroup;
 			children = (
+				C08C5E4129447A530064A69E /* Resources */,
 				OBJ_14 /* Support */,
 				OBJ_12 /* Info.plist */,
 				OBJ_13 /* Tests.swift */,
 			);
-			name = RukaTests;
-			path = Tests/RukaTests;
-			sourceTree = SOURCE_ROOT;
+			path = RukaTests;
+			sourceTree = "<group>";
 		};
 		OBJ_14 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				841FE769258040B200CBB8BF /* Main.storyboard */,
 				OBJ_15 /* FormViewController.swift */,
 				841FE7752580457900CBB8BF /* ModalViewController.swift */,
 				F2D972EC258AB0360034F592 /* NestedModalViewController.swift */,
@@ -220,8 +226,8 @@
 			children = (
 				OBJ_8 /* Ruka */,
 			);
-			name = Sources;
-			sourceTree = SOURCE_ROOT;
+			path = Sources;
+			sourceTree = "<group>";
 		};
 		OBJ_8 /* Ruka */ = {
 			isa = PBXGroup;
@@ -240,9 +246,8 @@
 				847AF242258982F100D81C33 /* UIView+Identifiable.swift */,
 				84146B132580386900A9768A /* UIView+SubviewFinder.swift */,
 			);
-			name = Ruka;
-			path = Sources/Ruka;
-			sourceTree = SOURCE_ROOT;
+			path = Ruka;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -362,7 +367,6 @@
 				84E75E48258039E8001F8290 /* LaunchScreen.storyboard in Resources */,
 				84E75E45258039E8001F8290 /* Assets.xcassets in Resources */,
 				84E75E43258039E7001F8290 /* Main.storyboard in Resources */,
-				841FE76F2580435600CBB8BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
