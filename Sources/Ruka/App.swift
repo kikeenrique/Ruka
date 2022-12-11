@@ -8,6 +8,7 @@ import AppKit
 
 import XCTest
 
+#if SWIFT_PACKAGE
 // SPM HACK https://forums.swift.org/t/dynamically-call-xctfail-in-spm-module-without-importing-xctest/36375
 typealias XCTCurrentTestCase = @convention(c) () -> AnyObject
 typealias XCTFailureHandler
@@ -33,6 +34,7 @@ func _XCTFail(_ message: String = "", file: StaticString = #file, line: UInt = #
 
   _XCTFailureHandler(_XCTCurrentTestCase(), true, "\(file)", line, message, nil)
 }
+#endif
 
 public struct App {
     public enum FailureBehavior {
@@ -203,7 +205,11 @@ public struct App {
     private func failOrRaise(_ message: String, file: StaticString, line: UInt) throws {
         switch failureBehavior {
         case .failTest:
+#if SWIFT_PACKAGE
             _XCTFail(message, file: file, line: line)
+#else
+            XCTFail(message, file: file, line: line)
+#endif
         case .raiseException:
             throw RukaError.unfoundElement
         case .doNothing:

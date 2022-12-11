@@ -9,8 +9,13 @@ class Tests: XCTestCase {
     // MARK: Storyboard
 
     func test_findsAStoryboardBackedController() throws {
+#if SWIFT_PACKAGE
+        let bundle = Bundle.module
+#else
+        let bundle = Bundle.main
+#endif
         let app = App(storyboard: "Main",
-                      bundle: .module,
+                      bundle: bundle,
                       identifier: "UIViewController identifier")
         XCTAssertNotNil(try app.label("Storyboard label text"))
     }
