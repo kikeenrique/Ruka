@@ -11,6 +11,9 @@ import XCTest
 extension XCUIElement: WaitersProtocol {
 }
 
+extension XCUIElement: WaitersConcurrencyProtocol {
+}
+
 public extension XCUIElement {
     func waitUntilExists(timeout: TimeInterval = 10,
                          file: StaticString = #file,

@@ -8,22 +8,7 @@
 import Foundation
 import XCTest
 
-// MARK: Waiters
-
-public enum TestWaitResult {
-    case wait, success
-}
-
-public enum WaitTimeoutCondition {
-    case fail, skip
-}
-
-
 public protocol WaitersProtocol {
-    func waitFor(interval: TimeInterval)
-
-    func waitForAnimations()
-
     func waitUntil(timeoutCondition: WaitTimeoutCondition,
                    file: StaticString,
                    line: UInt,
@@ -40,20 +25,11 @@ public protocol WaitersProtocol {
                     message: String,
                     file: StaticString,
                     line: UInt,
-                    block: () -> TestWaitResult,
+                    block: () -> WaitResult,
                     successBlock: (() -> Void)?)
-
 }
 
 extension WaitersProtocol {
-    public func waitFor(interval: TimeInterval) {
-        CFRunLoopRunInMode(CFRunLoopMode.defaultMode, interval, false)
-    }
-
-    public func waitForAnimations() {
-        waitFor(interval: 0.3)
-    }
-
     public func waitUntil(timeoutCondition: WaitTimeoutCondition = .fail,
                           file: StaticString = #file,
                           line: UInt = #line,
@@ -82,11 +58,11 @@ extension WaitersProtocol {
                            message: String = "Timeout waiting for condition",
                            file: StaticString = #file,
                            line: UInt = #line,
-                           block: () -> TestWaitResult,
+                           block: () -> WaitResult,
                            successBlock: (() -> Void)? = nil) {
         let timeoutMs = UInt(timeout * 1000)
         let startedAt = getAbsoluteTimeMs()
-        var result: TestWaitResult = .wait
+        var result: WaitResult = .wait
 
         while (getAbsoluteTimeMs() - startedAt) < timeoutMs {
             result = block()
@@ -110,14 +86,4 @@ extension WaitersProtocol {
             XCTFail("\(message)", file: file, line: line)
         }
     }
-
-    private func getAbsoluteTimeMs() -> UInt {
-        var info = mach_timebase_info(numer: 0, denom: 0)
-        mach_timebase_info(&info)
-        let numer = UInt64(info.numer)
-        let denom = UInt64(info.denom)
-        let nanoseconds = (mach_absolute_time() * numer) / denom
-        return UInt(nanoseconds / NSEC_PER_MSEC)
-    }
-
 }

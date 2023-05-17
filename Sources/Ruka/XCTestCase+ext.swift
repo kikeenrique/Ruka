@@ -10,3 +10,6 @@ import XCTest
 
 extension XCTestCase: WaitersProtocol {
 }
+
+extension XCTestCase: WaitersConcurrencyProtocol {
+}
