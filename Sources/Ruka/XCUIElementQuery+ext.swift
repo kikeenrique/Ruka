@@ -1,5 +1,5 @@
 //
-//  XCUIElementQuery.swift
+//  XCUIElementQuery+ext.swift
 //  
 //
 //  Created by Enrique Garcia Alvarez on 26/12/22.

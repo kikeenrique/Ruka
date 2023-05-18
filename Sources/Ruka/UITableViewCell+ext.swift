@@ -1,3 +1,10 @@
+//
+//  UITableViewCell+ext.swift
+//
+//
+//  Created by Enrique Garcia Alvarez on 18/5/23.
+//
+
 #if canImport(UIKit)
 import UIKit
 #endif

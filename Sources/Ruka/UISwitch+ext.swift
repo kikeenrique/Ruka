@@ -1,3 +1,10 @@
+//
+//  UISwitch+ext.swift
+//
+//
+//  Created by Enrique Garcia Alvarez on 18/5/23.
+//
+
 import Foundation
 #if canImport(UIKit)
 import UIKit
@@ -6,11 +13,10 @@ import UIKit
 import AppKit
 #endif
 
-public extension UISlider {
-    func set(value: Float) {
+public extension UISwitch {
+    func toggle() {
         guard isEnabled else { return }
-
-        setValue(value, animated: false)
+        
         sendActions(for: .valueChanged)
     }
 }
