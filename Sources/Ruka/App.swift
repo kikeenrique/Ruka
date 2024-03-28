@@ -76,7 +76,7 @@ public struct App {
     }
 
     // MARK: UISwitch
-
+    @available(tvOS, unavailable)
     public func `switch`(_ identifier: String,
                          file: StaticString = #filePath,
                          line: UInt = #line) throws -> UISwitch? {
@@ -86,6 +86,7 @@ public struct App {
 
     // MARK: UIStepper
 
+    @available(tvOS, unavailable)
     public func stepper(_ identifier: String,
                         file: StaticString = #filePath,
                         line: UInt = #line) throws -> UIStepper? {
@@ -95,6 +96,7 @@ public struct App {
 
     // MARK: UISlider
 
+    @available(tvOS, unavailable)
     public func slider(_ identifier: String,
                        file: StaticString = #filePath,
                        line: UInt = #line) throws -> UISlider? {

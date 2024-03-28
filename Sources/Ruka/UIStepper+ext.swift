@@ -13,6 +13,7 @@ import UIKit
 import AppKit
 #endif
 
+@available(tvOS, unavailable)
 public extension UIStepper {
     func increment() {
         guard isEnabled else { return }

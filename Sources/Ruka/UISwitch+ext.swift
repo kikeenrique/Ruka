@@ -13,6 +13,7 @@ import UIKit
 import AppKit
 #endif
 
+@available(tvOS, unavailable)
 public extension UISwitch {
     func toggle() {
         guard isEnabled else { return }

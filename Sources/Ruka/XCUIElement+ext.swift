@@ -38,6 +38,7 @@ public extension XCUIElement {
         waitFor(file: file, line: line) { !isEnabled }
     }
 
+    @available(tvOS, unavailable)
     func waitAndTap(file: StaticString = #file,
                     line: UInt = #line) {
         waitUntilExists(file: file, line: line)
@@ -59,6 +60,7 @@ public extension XCUIElement {
         typeText(text)
     }
 
+    @available(tvOS, unavailable)
     func tapAndType(_ text: String,
                     file: StaticString = #file,
                     line: UInt = #line) {
