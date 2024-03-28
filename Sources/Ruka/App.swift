@@ -16,12 +16,6 @@ import AppKit
 import XCTest
 
 public struct App {
-    public enum FailureBehavior {
-        case failTest
-        case raiseException
-        case doNothing
-    }
-
     public init(window: UIWindow = UIWindow(),
                 controller: UIViewController,
                 failureBehavior: FailureBehavior = .failTest) {
@@ -44,26 +38,12 @@ public struct App {
         load(controller: controller)
     }
 
-    // MARK: UIView generic
-
-    public func getViewBy<T: UIView>(_ identifier: String,
-                                     file: StaticString = #filePath,
-                                     line: UInt = #line) throws -> T? {
-        let views = controller.view.findViews(subclassOf: T.self)
-        let view = views.first(where: { $0.isIdentifiable(by: identifier, in: controller) })
-
-        if view == nil, failureBehavior != .doNothing {
-            try failOrRaise("Could not find view with '\(identifier)'.", file: file, line: line)
-        }
-        return view
-    }
-
     // MARK: UILabel
 
     public func label(_ identifier: String,
                       file: StaticString = #filePath,
                       line: UInt = #line) throws -> UILabel? {
-        return try getViewBy(identifier)
+        return try controller.getViewBy(identifier)
     }
 
     // MARK: UIButton
@@ -71,7 +51,7 @@ public struct App {
     public func button(_ identifier: String,
                        file: StaticString = #filePath,
                        line: UInt = #line) throws -> UIButton? {
-        return try getViewBy(identifier)
+        return try controller.getViewBy(identifier)
     }
 
     public func tapButton(title: String,
@@ -93,25 +73,12 @@ public struct App {
         controller.view.findViews(subclassOf: UITableView.self).first
     }
 
-    public func cell(containingText text: String,
-                     file: StaticString = #filePath,
-                     line: UInt = #line) throws -> UITableViewCell? {
-        let tableViewCell = tableView?.visibleCells.first(where: { cell -> Bool in
-            cell.findViews(subclassOf: UILabel.self).contains { $0.text == text }
-        })
-
-        if tableViewCell == nil, failureBehavior != .doNothing {
-            try failOrRaise("Could not find cell containing text '\(text)'.", file: file, line: line)
-        }
-        return tableViewCell
-    }
-
     // MARK: UISwitch
 
     public func `switch`(_ identifier: String,
                          file: StaticString = #filePath,
                          line: UInt = #line) throws -> UISwitch? {
-        return try getViewBy(identifier)
+        return try controller.getViewBy(identifier)
     }
 
     // MARK: UIStepper
@@ -119,7 +86,7 @@ public struct App {
     public func stepper(_ identifier: String,
                         file: StaticString = #filePath,
                         line: UInt = #line) throws -> UIStepper? {
-        return try getViewBy(identifier)
+        return try controller.getViewBy(identifier)
     }
 
     // MARK: UISlider
@@ -127,7 +94,7 @@ public struct App {
     public func slider(_ identifier: String,
                        file: StaticString = #filePath,
                        line: UInt = #line) throws -> UISlider? {
-        return try getViewBy(identifier)
+        return try controller.getViewBy(identifier)
     }
 
     // MARK: UITextField
@@ -135,7 +102,7 @@ public struct App {
     public func textField(_ identifier: String,
                           file: StaticString = #filePath,
                           line: UInt = #line) throws -> UITextField? {
-        return try getViewBy(identifier)
+        return try controller.getViewBy(identifier)
     }
 
     // MARK: UIAlertController
@@ -146,13 +113,9 @@ public struct App {
 
     // MARK: Private
 
-    private enum RukaError: Error {
-        case unfoundElement
-    }
-
     private let failureBehavior: FailureBehavior
     private let window: UIWindow!
-    private var controller: UIViewController! { visibleViewController(from: window.rootViewController) }
+    private var controller: UIViewController! { window.rootViewController?.visibleViewController() }
 
     private func load(controller: UIViewController) {
         window.rootViewController = controller
@@ -160,68 +123,9 @@ public struct App {
         controller.loadViewIfNeeded()
         controller.view.layoutIfNeeded()
     }
-
-    private func visibleViewController(from viewController: UIViewController?) -> UIViewController? {
-        if let navigationController = viewController as? UINavigationController {
-            return visibleViewController(from: navigationController.topViewController)
-        }
-
-        if let tabBarController = viewController as? UITabBarController {
-            return visibleViewController(from: tabBarController.selectedViewController)
-        }
-
-        if let presentedViewController = viewController?.presentedViewController {
-            return visibleViewController(from: presentedViewController)
-        }
-
-        return viewController
-    }
-
+    
     private func viewIsVisibleInController(_ view: UIView) -> Bool {
         view.frame.intersects(controller.view.bounds)
     }
 
-    private func failOrRaise(_ message: String, file: StaticString, line: UInt) throws {
-        switch failureBehavior {
-        case .failTest:
-#if SWIFT_PACKAGE
-            _XCTFail(message, file: file, line: line)
-#else
-            XCTFail(message, file: file, line: line)
-#endif
-        case .raiseException:
-            throw RukaError.unfoundElement
-        case .doNothing:
-            break
-        }
-    }
 }
-
-#if SWIFT_PACKAGE
-// SPM HACK https://forums.swift.org/t/dynamically-call-xctfail-in-spm-module-without-importing-xctest/36375
-typealias XCTCurrentTestCase = @convention(c) () -> AnyObject
-typealias XCTFailureHandler
-  = @convention(c) (AnyObject, Bool, UnsafePointer<CChar>, UInt, String, String?) -> Void
-
-func _XCTFail(_ message: String = "", file: StaticString = #file, line: UInt = #line) {
-  guard
-    let _XCTest = NSClassFromString("XCTest")
-      .flatMap(Bundle.init(for:))
-      .flatMap({ $0.executablePath })
-      .flatMap({ dlopen($0, RTLD_NOW) })
-    else { return }
-
-  guard
-    let _XCTFailureHandler = dlsym(_XCTest, "_XCTFailureHandler")
-      .map({ unsafeBitCast($0, to: XCTFailureHandler.self) })
-    else { return }
-
-  guard
-    let _XCTCurrentTestCase = dlsym(_XCTest, "_XCTCurrentTestCase")
-      .map({ unsafeBitCast($0, to: XCTCurrentTestCase.self) })
-    else { return }
-
-  _XCTFailureHandler(_XCTCurrentTestCase(), true, "\(file)", line, message, nil)
-}
-#endif
-

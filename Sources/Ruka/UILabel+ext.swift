@@ -1,6 +1,6 @@
 //
-//  Identifiable.swift
-//
+//  UILabel+ext.swift
+//  
 //
 //  Created by Enrique Garcia Alvarez on 18/5/23.
 //
@@ -13,6 +13,8 @@ import UIKit
 import AppKit
 #endif
 
-protocol Identifiable {
-    func isIdentifiable(by identifier: String) -> Bool
+extension UILabel: Identifiable {
+    func isIdentifiable(by identifier: String) -> Bool {
+        text == identifier
+    }
 }
