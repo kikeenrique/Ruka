@@ -1,0 +1,12 @@
+//
+//  general.xcconfig
+//  Ruka
+//
+//  Created by Enrique Garcia Alvarez on 28/3/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+PRODUCT_BUNDLE_IDENTIFIER_FRAMEWORK=Ruka
+PRODUCT_BUNDLE_IDENTIFIER_HOST=com.masilotti.Host-App
+DEVELOPMENT_TEAM=6JS2VP4ATY
