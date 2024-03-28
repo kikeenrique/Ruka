@@ -23,9 +23,6 @@ jobs:
         - name: Brew Update
           run: |
             brew update
-        - name: Install xcbeautify
-          run: |
-            brew install xcbeautify
         - name: List Simulators
           run: |
             xcrun simctl list
@@ -55,9 +52,6 @@ jobs:
         - name: Brew Update
           run: |
             brew update
-        - name: Install xcbeautify
-          run: |
-            brew install xcbeautify
         - name: List Simulators
           run: |
             xcrun simctl list
