@@ -34,12 +34,15 @@ class FormViewController: UIViewController {
     }
 
     private func installSubviews() {
+#if !os(tvOS)
         addSwitches()
         addSteppers()
         addSliders()
+#endif
         addTextFields()
     }
 
+#if !os(tvOS)
     private func addSwitches() {
         _ = addSwitch(accessibilityLabel: "A switch")
         _ = addSwitch(accessibilityLabel: "A hidden switch", isHidden: true)
@@ -59,6 +62,20 @@ class FormViewController: UIViewController {
 
         switchlabel.text = "Disabled"
         stackView.addArrangedSubview(switchlabel)
+    }
+
+    private func addSwitch(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UISwitch {
+        let `switch` = UISwitch()
+        `switch`.isHidden = isHidden
+        `switch`.isEnabled = isEnabled
+        `switch`.accessibilityLabel = accessibilityLabel
+        `switch`.addTarget(self, action: #selector(toggleSwitch), for: .valueChanged)
+        stackView.addArrangedSubview(`switch`)
+        return `switch`
+    }
+
+    @objc private func toggleSwitch(switch: UISwitch) {
+        switchlabel.text = `switch`.isOn ? "Disabled" : "Enabled"
     }
 
     private func addSteppers() {
@@ -81,6 +98,21 @@ class FormViewController: UIViewController {
 
         stepperLabel.text = "2.0"
         stackView.addArrangedSubview(stepperLabel)
+    }
+
+    private func addStepper(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UIStepper {
+        let stepper = UIStepper()
+        stepper.value = 2
+        stepper.isHidden = isHidden
+        stepper.isEnabled = isEnabled
+        stepper.accessibilityLabel = accessibilityLabel
+        stepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
+        stackView.addArrangedSubview(stepper)
+        return stepper
+    }
+
+    @objc private func changeStepper(stepper: UIStepper) {
+        stepperLabel.text = "\(stepper.value)"
     }
 
     private func addSliders() {
@@ -106,6 +138,23 @@ class FormViewController: UIViewController {
         stackView.addArrangedSubview(sliderLabel)
     }
 
+    private func addSlider(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UISlider {
+        let slider = UISlider()
+        slider.value = 20
+        slider.maximumValue = 40
+        slider.isHidden = isHidden
+        slider.isEnabled = isEnabled
+        slider.accessibilityLabel = accessibilityLabel
+        slider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
+        stackView.addArrangedSubview(slider)
+        return slider
+    }
+
+    @objc private func changeSlider(slider: UISlider) {
+        sliderLabel.text = "\(slider.value)"
+    }
+#endif
+
     private func addTextFields() {
         _ = addTextField(placeholder: "Text field placeholder")
         _ = addTextField(placeholder: "Hidden text field placeholder", isHidden: true)
@@ -126,39 +175,6 @@ class FormViewController: UIViewController {
         stackView.addArrangedSubview(textFieldLabel)
     }
 
-    private func addSwitch(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UISwitch {
-        let `switch` = UISwitch()
-        `switch`.isHidden = isHidden
-        `switch`.isEnabled = isEnabled
-        `switch`.accessibilityLabel = accessibilityLabel
-        `switch`.addTarget(self, action: #selector(toggleSwitch), for: .valueChanged)
-        stackView.addArrangedSubview(`switch`)
-        return `switch`
-    }
-
-    private func addStepper(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UIStepper {
-        let stepper = UIStepper()
-        stepper.value = 2
-        stepper.isHidden = isHidden
-        stepper.isEnabled = isEnabled
-        stepper.accessibilityLabel = accessibilityLabel
-        stepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
-        stackView.addArrangedSubview(stepper)
-        return stepper
-    }
-
-    private func addSlider(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UISlider {
-        let slider = UISlider()
-        slider.value = 20
-        slider.maximumValue = 40
-        slider.isHidden = isHidden
-        slider.isEnabled = isEnabled
-        slider.accessibilityLabel = accessibilityLabel
-        slider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
-        stackView.addArrangedSubview(slider)
-        return slider
-    }
-
     private func addTextField(placeholder: String, isHidden: Bool = false, isEnabled: Bool = true) -> UITextField {
         let textField = UITextField()
         textField.placeholder = placeholder
@@ -169,17 +185,8 @@ class FormViewController: UIViewController {
         return textField
     }
 
-    @objc private func toggleSwitch(switch: UISwitch) {
-        switchlabel.text = `switch`.isOn ? "Disabled" : "Enabled"
-    }
-
-    @objc private func changeStepper(stepper: UIStepper) {
-        stepperLabel.text = "\(stepper.value)"
-    }
-
-    @objc private func changeSlider(slider: UISlider) {
-        sliderLabel.text = "\(slider.value)"
-    }
+#if !os(tvOS)
+#endif
 }
 
 extension FormViewController: UITextFieldDelegate {

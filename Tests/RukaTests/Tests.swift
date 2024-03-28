@@ -228,6 +228,7 @@ class Tests: XCTestCase {
 
     // MARK: UISwitch
 
+#if !os(tvOS)
     func test_findsASwitchViaTheAccessibilityLabel() throws {
         let app = App(controller: FormViewController())
         XCTAssertNotNil(try app.switch("a11y labeled switch"))
@@ -267,7 +268,6 @@ class Tests: XCTestCase {
         `switch`?.toggle()
         XCTAssertNotNil(try app.label("Disabled"))
     }
-
     // MARK: UIStepper
 
     func test_findsAStepperViaTheAccessibilityLabel() throws {
@@ -351,6 +351,7 @@ class Tests: XCTestCase {
         try app.slider("A disabled slider")?.set(value: 30)
         XCTAssertNotNil(try app.label("20.0"))
     }
+#endif
 
     // MARK: UITextField
 
