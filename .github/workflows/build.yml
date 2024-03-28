@@ -31,7 +31,7 @@ jobs:
             set -o pipefail
         - name: Build
           run: |
-           env NSUnbufferedIO=YES xcodebuild -project "Ruka.xcodeproj" -scheme "Ruka" -destination "${DESTINATION}" clean build | xcbeautify
+           env NSUnbufferedIO=YES xcodebuild -project "Ruka.xcodeproj" -scheme "Ruka" -destination "${DESTINATION}" clean build
     
   test-App:
     name: Test App
@@ -60,4 +60,4 @@ jobs:
             set -o pipefail
         - name: Test
           run: |
-            env NSUnbufferedIO=YES xcodebuild -project "Ruka.xcodeproj" -scheme "Ruka" -destination "${DESTINATION}" clean test | xcbeautify
+            env NSUnbufferedIO=YES xcodebuild -project "Ruka.xcodeproj" -scheme "Ruka" -destination "${DESTINATION}" clean test
