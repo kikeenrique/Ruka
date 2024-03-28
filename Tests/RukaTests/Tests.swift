@@ -34,12 +34,14 @@ class Tests: XCTestCase {
     }
 
     func test_doesNotFindAHiddenLabel() throws {
-        let app = App(controller: RootViewController(), failureBehavior: .doNothing)
+        let app = App(controller: RootViewController(),
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.label(RootViewController.labelHiddenText))
     }
 
     func test_doesNotFindALabelOffTheScreen() throws {
-        let app = App(controller: RootViewController(), failureBehavior: .doNothing)
+        let app = App(controller: RootViewController(),
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.label(RootViewController.labelOffScreen))
     }
 
@@ -66,13 +68,15 @@ class Tests: XCTestCase {
 
     func test_doesNotFindAHiddenButton() throws {
         let controller = RootViewController()
-        let app = App(controller: controller, failureBehavior: .doNothing)
+        let app = App(controller: controller,
+                      failureBehavior: .doNothing)
 
         XCTAssertNil(try app.button(RootViewController.buttonTitleHidden))
     }
 
     func test_doesNotFindAButtonOffTheScreen() throws {
-        let app = App(controller: RootViewController(), failureBehavior: .doNothing)
+        let app = App(controller: RootViewController(),
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.button(RootViewController.offScreenButtonTitle))
     }
 
@@ -87,7 +91,8 @@ class Tests: XCTestCase {
 
     func test_doesNotTapADisabledButton() throws {
         let controller = RootViewController()
-        let app = App(controller: controller, failureBehavior: .doNothing)
+        let app = App(controller: controller,
+                      failureBehavior: .doNothing)
 
         try app.tapButton(title: RootViewController.disableButtonTitle)
 
@@ -129,7 +134,8 @@ class Tests: XCTestCase {
 
     func test_dismissesAViewController() throws {
         let controller = RootViewController()
-        let app = App(controller: controller, failureBehavior: .doNothing)
+        let app = App(controller: controller,
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.button("Dismiss view controller"))
 
         try app.tapButton(title: "Present view controller")
@@ -141,7 +147,8 @@ class Tests: XCTestCase {
     
     func test_dismissNestedModalViewController() throws {
         let controller = RootViewController()
-        let app = App(controller: controller, failureBehavior: .doNothing)
+        let app = App(controller: controller, 
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.button("Dismiss view controller"))
 
         try app.tapButton(title: "Present view controller")
@@ -161,7 +168,8 @@ class Tests: XCTestCase {
     
     func test_presentsAViewControllerOnSecondTabInTabBarController() throws {
         let tabBarController = TabBarViewController()
-        let app = App(controller: tabBarController, failureBehavior: .doNothing)
+        let app = App(controller: tabBarController,
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.button("Present view controller from second tab"))
 
         tabBarController.selectedIndex = 1
@@ -184,7 +192,8 @@ class Tests: XCTestCase {
 
     func test_dismissesAnAlert() throws {
         let controller = RootViewController()
-        let app = App(controller: controller, failureBehavior: .doNothing)
+        let app = App(controller: controller, 
+                      failureBehavior: .doNothing)
 
         try app.tapButton(title: "Show alert")
         XCTAssertNil(try app.button("Show alert"))
@@ -202,7 +211,8 @@ class Tests: XCTestCase {
     }
 
     func test_findsASpecificCell() throws {
-        let app = App(controller: TableViewController(), failureBehavior: .doNothing)
+        let app = App(controller: TableViewController(), 
+                      failureBehavior: .doNothing)
         XCTAssertNotNil(try app.tableView?.cell(containingText: "Three"))
         XCTAssertNotNil(try app.label(RootViewController.labelText))
 
@@ -229,12 +239,14 @@ class Tests: XCTestCase {
     }
 
     func test_doesNotFindAHiddenSwitch() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(), 
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.switch("A hidden switch"))
     }
 
     func test_doesNotFindASwitchOffTheScreen() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(),
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.switch("An off screen switch"))
     }
 
@@ -269,12 +281,14 @@ class Tests: XCTestCase {
     }
 
     func test_doesNotFindAHiddenStepper() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(), 
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.stepper("A hidden stepper"))
     }
 
     func test_doesNotFindAStepperOffTheScreen() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(), 
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.stepper("An off screen stepper"))
     }
 
@@ -315,12 +329,14 @@ class Tests: XCTestCase {
     }
 
     func test_doesNotFindAHiddenSlider() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(), 
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.slider("A hidden slider"))
     }
 
     func test_doesNotFindASliderOffTheScreen() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(), 
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.slider("An off screen slider"))
     }
 
@@ -354,12 +370,14 @@ class Tests: XCTestCase {
     }
 
     func test_doesNotFindAHiddenTextField() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(), 
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.textField("Hidden text field placeholder"))
     }
 
     func test_doesNotFindATextFieldOffTheScreen() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(),
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.textField("Off screen text field placeholder"))
     }
 
@@ -373,7 +391,8 @@ class Tests: XCTestCase {
     }
 
     func test_doesNotTypeIntoADisabledTextField() throws {
-        let app = App(controller: FormViewController(), failureBehavior: .doNothing)
+        let app = App(controller: FormViewController(),
+                      failureBehavior: .doNothing)
         let textField = try app.textField("Disabled text field placeholder")
 
         textField?.type(text: "Some typed text.")
@@ -384,17 +403,20 @@ class Tests: XCTestCase {
     // MARK: Failure behavior
 
     func test_aMissingElement_raisesAnError() throws {
-        let app = App(controller: RootViewController(), failureBehavior: .raiseException)
+        let app = App(controller: RootViewController(), 
+                      failureBehavior: .raiseException)
         XCTAssertThrowsError(try app.label("Missing element"))
     }
 
     func test_aMissingElement_isNil() throws {
-        let app = App(controller: RootViewController(), failureBehavior: .doNothing)
+        let app = App(controller: RootViewController(), 
+                      failureBehavior: .doNothing)
         XCTAssertNil(try app.label("Missing element"))
     }
 
     func test_aMissingElement_fails() throws {
-        let app = App(controller: RootViewController(), failureBehavior: .failTest)
+        let app = App(controller: RootViewController(), 
+                      failureBehavior: .failTest)
         let options = XCTExpectedFailure.Options()
         options.issueMatcher = { issue in
             issue.type == .assertionFailure &&
