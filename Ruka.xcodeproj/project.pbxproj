@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -21,18 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		84146B162580386900A9768A /* UISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B142580386900A9768A /* UISwitch.swift */; };
 		84146B172580386900A9768A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B112580386900A9768A /* App.swift */; };
-		84146B182580386900A9768A /* UIAlertController+ActionInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B122580386900A9768A /* UIAlertController+ActionInvoker.swift */; };
 		84146B192580386900A9768A /* UIView+SubviewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B132580386900A9768A /* UIView+SubviewFinder.swift */; };
 		841FE7762580457900CBB8BF /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FE7752580457900CBB8BF /* ModalViewController.swift */; };
-		841FE7822581408300CBB8BF /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FE7812581408300CBB8BF /* UITextField.swift */; };
 		84584DCE258E83150098FDEE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84584DCD258E83150098FDEE /* Animation.swift */; };
 		847AF23225897D8200D81C33 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF23125897D8200D81C33 /* Identifiable.swift */; };
 		847AF243258982F100D81C33 /* UIView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF242258982F100D81C33 /* UIView+Identifiable.swift */; };
-		847AF24A258983BA00D81C33 /* UIStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF249258983BA00D81C33 /* UIStepper.swift */; };
-		847AF2512589852E00D81C33 /* UISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF2502589852E00D81C33 /* UISlider.swift */; };
-		84BC452B2582A48100ED9837 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC452A2582A48100ED9837 /* UITableViewCell.swift */; };
 		84E75E3C258039E7001F8290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E75E3B258039E7001F8290 /* AppDelegate.swift */; };
 		84E75E3E258039E7001F8290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E75E3D258039E7001F8290 /* SceneDelegate.swift */; };
 		84E75E40258039E7001F8290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E75E3F258039E7001F8290 /* ViewController.swift */; };
@@ -40,6 +34,27 @@
 		84E75E45258039E8001F8290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E75E44258039E8001F8290 /* Assets.xcassets */; };
 		84E75E48258039E8001F8290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E75E46258039E8001F8290 /* LaunchScreen.storyboard */; };
 		C01EEAAD2908944400B0CE34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01EEAAC2908944400B0CE34 /* XCTest.framework */; platformFilter = ios; };
+		C0D793712BB5C5A80084E4A3 /* WaitResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */; };
+		C0D793722BB5C5A80084E4A3 /* UISlider+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */; };
+		C0D793732BB5C5A80084E4A3 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */; };
+		C0D793742BB5C5A80084E4A3 /* RukaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935F2BB5C5A80084E4A3 /* RukaError.swift */; };
+		C0D793752BB5C5A80084E4A3 /* UILabel+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793602BB5C5A80084E4A3 /* UILabel+ext.swift */; };
+		C0D793762BB5C5A80084E4A3 /* WaitersConcurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793612BB5C5A80084E4A3 /* WaitersConcurrency.swift */; };
+		C0D793772BB5C5A80084E4A3 /* UITableViewCell+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793622BB5C5A80084E4A3 /* UITableViewCell+ext.swift */; };
+		C0D793782BB5C5A80084E4A3 /* WaitTimeoutCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793632BB5C5A80084E4A3 /* WaitTimeoutCondition.swift */; };
+		C0D793792BB5C5A80084E4A3 /* FailureBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793642BB5C5A80084E4A3 /* FailureBehavior.swift */; };
+		C0D7937A2BB5C5A80084E4A3 /* UIStepper+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793652BB5C5A80084E4A3 /* UIStepper+ext.swift */; };
+		C0D7937B2BB5C5A80084E4A3 /* MainRunLoopActivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793662BB5C5A80084E4A3 /* MainRunLoopActivityObserver.swift */; };
+		C0D7937C2BB5C5A80084E4A3 /* Waiters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793672BB5C5A80084E4A3 /* Waiters.swift */; };
+		C0D7937D2BB5C5A80084E4A3 /* XCTestCase+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793682BB5C5A80084E4A3 /* XCTestCase+ext.swift */; };
+		C0D7937E2BB5C5A80084E4A3 /* UIAlertController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793692BB5C5A80084E4A3 /* UIAlertController+ext.swift */; };
+		C0D7937F2BB5C5A80084E4A3 /* XCUIApplication+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7936A2BB5C5A80084E4A3 /* XCUIApplication+ext.swift */; };
+		C0D793802BB5C5A80084E4A3 /* UITextField+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7936B2BB5C5A80084E4A3 /* UITextField+ext.swift */; };
+		C0D793812BB5C5A80084E4A3 /* XCUIElement+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7936C2BB5C5A80084E4A3 /* XCUIElement+ext.swift */; };
+		C0D793822BB5C5A80084E4A3 /* XCUIElementQuery+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7936D2BB5C5A80084E4A3 /* XCUIElementQuery+ext.swift */; };
+		C0D793832BB5C5A80084E4A3 /* UISwitch+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7936E2BB5C5A80084E4A3 /* UISwitch+ext.swift */; };
+		C0D793842BB5C5A80084E4A3 /* UITableView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7936F2BB5C5A80084E4A3 /* UITableView+ext.swift */; };
+		C0D793852BB5C5A80084E4A3 /* UIButton+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D793702BB5C5A80084E4A3 /* UIButton+ext.swift */; };
 		F2D972DF258A876C0034F592 /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972DE258A876C0034F592 /* SecondTabViewController.swift */; };
 		F2D972E6258AACB10034F592 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972E5258AACB10034F592 /* TabBarViewController.swift */; };
 		F2D972ED258AB0360034F592 /* NestedModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972EC258AB0360034F592 /* NestedModalViewController.swift */; };
@@ -78,21 +93,15 @@
 		84146B0F2580386900A9768A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84146B102580386900A9768A /* Ruka.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ruka.h; sourceTree = "<group>"; };
 		84146B112580386900A9768A /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		84146B122580386900A9768A /* UIAlertController+ActionInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+ActionInvoker.swift"; sourceTree = "<group>"; };
 		84146B132580386900A9768A /* UIView+SubviewFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SubviewFinder.swift"; sourceTree = "<group>"; };
-		84146B142580386900A9768A /* UISwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwitch.swift; sourceTree = "<group>"; };
 		84146B3F258038A300A9768A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		841FE71C25803AF000CBB8BF /* Ruka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ruka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE71D25803AF000CBB8BF /* RukaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RukaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE71E25803AF000CBB8BF /* Host App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Host App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE7752580457900CBB8BF /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		841FE7812581408300CBB8BF /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		84584DCD258E83150098FDEE /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		847AF23125897D8200D81C33 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		847AF242258982F100D81C33 /* UIView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifiable.swift"; sourceTree = "<group>"; };
-		847AF249258983BA00D81C33 /* UIStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStepper.swift; sourceTree = "<group>"; };
-		847AF2502589852E00D81C33 /* UISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlider.swift; sourceTree = "<group>"; };
-		84BC452A2582A48100ED9837 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		84E75E3B258039E7001F8290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84E75E3D258039E7001F8290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84E75E3F258039E7001F8290 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +111,27 @@
 		84E75E49258039E8001F8290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C01EEAAC2908944400B0CE34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C08C5E4229447A530064A69E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitResult.swift; sourceTree = "<group>"; };
+		C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ext.swift"; sourceTree = "<group>"; };
+		C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
+		C0D7935F2BB5C5A80084E4A3 /* RukaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RukaError.swift; sourceTree = "<group>"; };
+		C0D793602BB5C5A80084E4A3 /* UILabel+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+ext.swift"; sourceTree = "<group>"; };
+		C0D793612BB5C5A80084E4A3 /* WaitersConcurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitersConcurrency.swift; sourceTree = "<group>"; };
+		C0D793622BB5C5A80084E4A3 /* UITableViewCell+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ext.swift"; sourceTree = "<group>"; };
+		C0D793632BB5C5A80084E4A3 /* WaitTimeoutCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitTimeoutCondition.swift; sourceTree = "<group>"; };
+		C0D793642BB5C5A80084E4A3 /* FailureBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailureBehavior.swift; sourceTree = "<group>"; };
+		C0D793652BB5C5A80084E4A3 /* UIStepper+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStepper+ext.swift"; sourceTree = "<group>"; };
+		C0D793662BB5C5A80084E4A3 /* MainRunLoopActivityObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRunLoopActivityObserver.swift; sourceTree = "<group>"; };
+		C0D793672BB5C5A80084E4A3 /* Waiters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waiters.swift; sourceTree = "<group>"; };
+		C0D793682BB5C5A80084E4A3 /* XCTestCase+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+ext.swift"; sourceTree = "<group>"; };
+		C0D793692BB5C5A80084E4A3 /* UIAlertController+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+ext.swift"; sourceTree = "<group>"; };
+		C0D7936A2BB5C5A80084E4A3 /* XCUIApplication+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+ext.swift"; sourceTree = "<group>"; };
+		C0D7936B2BB5C5A80084E4A3 /* UITextField+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+ext.swift"; sourceTree = "<group>"; };
+		C0D7936C2BB5C5A80084E4A3 /* XCUIElement+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIElement+ext.swift"; sourceTree = "<group>"; };
+		C0D7936D2BB5C5A80084E4A3 /* XCUIElementQuery+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIElementQuery+ext.swift"; sourceTree = "<group>"; };
+		C0D7936E2BB5C5A80084E4A3 /* UISwitch+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISwitch+ext.swift"; sourceTree = "<group>"; };
+		C0D7936F2BB5C5A80084E4A3 /* UITableView+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+ext.swift"; sourceTree = "<group>"; };
+		C0D793702BB5C5A80084E4A3 /* UIButton+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ext.swift"; sourceTree = "<group>"; };
 		F2D972DE258A876C0034F592 /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
 		F2D972E5258AACB10034F592 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F2D972EC258AB0360034F592 /* NestedModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedModalViewController.swift; sourceTree = "<group>"; };
@@ -232,19 +262,34 @@
 		OBJ_8 /* Ruka */ = {
 			isa = PBXGroup;
 			children = (
-				84146B102580386900A9768A /* Ruka.h */,
-				84146B0F2580386900A9768A /* Info.plist */,
 				84584DCD258E83150098FDEE /* Animation.swift */,
 				84146B112580386900A9768A /* App.swift */,
+				C0D793642BB5C5A80084E4A3 /* FailureBehavior.swift */,
 				847AF23125897D8200D81C33 /* Identifiable.swift */,
-				84146B122580386900A9768A /* UIAlertController+ActionInvoker.swift */,
-				847AF2502589852E00D81C33 /* UISlider.swift */,
-				847AF249258983BA00D81C33 /* UIStepper.swift */,
-				84146B142580386900A9768A /* UISwitch.swift */,
-				84BC452A2582A48100ED9837 /* UITableViewCell.swift */,
-				841FE7812581408300CBB8BF /* UITextField.swift */,
+				84146B0F2580386900A9768A /* Info.plist */,
+				C0D793662BB5C5A80084E4A3 /* MainRunLoopActivityObserver.swift */,
+				84146B102580386900A9768A /* Ruka.h */,
+				C0D7935F2BB5C5A80084E4A3 /* RukaError.swift */,
+				C0D793692BB5C5A80084E4A3 /* UIAlertController+ext.swift */,
+				C0D793702BB5C5A80084E4A3 /* UIButton+ext.swift */,
+				C0D793602BB5C5A80084E4A3 /* UILabel+ext.swift */,
+				C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */,
+				C0D793652BB5C5A80084E4A3 /* UIStepper+ext.swift */,
+				C0D7936E2BB5C5A80084E4A3 /* UISwitch+ext.swift */,
+				C0D7936F2BB5C5A80084E4A3 /* UITableView+ext.swift */,
+				C0D793622BB5C5A80084E4A3 /* UITableViewCell+ext.swift */,
+				C0D7936B2BB5C5A80084E4A3 /* UITextField+ext.swift */,
 				847AF242258982F100D81C33 /* UIView+Identifiable.swift */,
 				84146B132580386900A9768A /* UIView+SubviewFinder.swift */,
+				C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */,
+				C0D793672BB5C5A80084E4A3 /* Waiters.swift */,
+				C0D793612BB5C5A80084E4A3 /* WaitersConcurrency.swift */,
+				C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */,
+				C0D793632BB5C5A80084E4A3 /* WaitTimeoutCondition.swift */,
+				C0D793682BB5C5A80084E4A3 /* XCTestCase+ext.swift */,
+				C0D7936A2BB5C5A80084E4A3 /* XCUIApplication+ext.swift */,
+				C0D7936C2BB5C5A80084E4A3 /* XCUIElement+ext.swift */,
+				C0D7936D2BB5C5A80084E4A3 /* XCUIElementQuery+ext.swift */,
 			);
 			path = Ruka;
 			sourceTree = "<group>";
@@ -387,17 +432,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				C0D793782BB5C5A80084E4A3 /* WaitTimeoutCondition.swift in Sources */,
+				C0D793762BB5C5A80084E4A3 /* WaitersConcurrency.swift in Sources */,
 				847AF23225897D8200D81C33 /* Identifiable.swift in Sources */,
-				847AF2512589852E00D81C33 /* UISlider.swift in Sources */,
+				C0D793852BB5C5A80084E4A3 /* UIButton+ext.swift in Sources */,
+				C0D793732BB5C5A80084E4A3 /* UIViewController+ext.swift in Sources */,
+				C0D793822BB5C5A80084E4A3 /* XCUIElementQuery+ext.swift in Sources */,
+				C0D793742BB5C5A80084E4A3 /* RukaError.swift in Sources */,
 				84146B192580386900A9768A /* UIView+SubviewFinder.swift in Sources */,
-				84146B162580386900A9768A /* UISwitch.swift in Sources */,
-				847AF24A258983BA00D81C33 /* UIStepper.swift in Sources */,
+				C0D793712BB5C5A80084E4A3 /* WaitResult.swift in Sources */,
+				C0D793802BB5C5A80084E4A3 /* UITextField+ext.swift in Sources */,
+				C0D7937A2BB5C5A80084E4A3 /* UIStepper+ext.swift in Sources */,
+				C0D793752BB5C5A80084E4A3 /* UILabel+ext.swift in Sources */,
+				C0D7937D2BB5C5A80084E4A3 /* XCTestCase+ext.swift in Sources */,
+				C0D7937B2BB5C5A80084E4A3 /* MainRunLoopActivityObserver.swift in Sources */,
+				C0D7937E2BB5C5A80084E4A3 /* UIAlertController+ext.swift in Sources */,
+				C0D793812BB5C5A80084E4A3 /* XCUIElement+ext.swift in Sources */,
+				C0D7937F2BB5C5A80084E4A3 /* XCUIApplication+ext.swift in Sources */,
+				C0D793842BB5C5A80084E4A3 /* UITableView+ext.swift in Sources */,
 				847AF243258982F100D81C33 /* UIView+Identifiable.swift in Sources */,
+				C0D793792BB5C5A80084E4A3 /* FailureBehavior.swift in Sources */,
 				84146B172580386900A9768A /* App.swift in Sources */,
-				84146B182580386900A9768A /* UIAlertController+ActionInvoker.swift in Sources */,
-				84BC452B2582A48100ED9837 /* UITableViewCell.swift in Sources */,
+				C0D793722BB5C5A80084E4A3 /* UISlider+ext.swift in Sources */,
+				C0D793832BB5C5A80084E4A3 /* UISwitch+ext.swift in Sources */,
+				C0D793772BB5C5A80084E4A3 /* UITableViewCell+ext.swift in Sources */,
+				C0D7937C2BB5C5A80084E4A3 /* Waiters.swift in Sources */,
 				84584DCE258E83150098FDEE /* Animation.swift in Sources */,
-				841FE7822581408300CBB8BF /* UITextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,12 +666,12 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Ruka.xcodeproj/Ruka_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -624,8 +684,8 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = Ruka;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -639,12 +699,12 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Ruka.xcodeproj/Ruka_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -657,8 +717,8 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = Ruka;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -703,7 +763,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -770,7 +829,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -820,8 +878,8 @@
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = RukaTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Host App.app/Host App";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -850,8 +908,8 @@
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = RukaTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Host App.app/Host App";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
