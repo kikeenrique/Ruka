@@ -12,22 +12,22 @@ public enum FailureBehavior {
     case failTest
     case raiseException
     case doNothing
-}
-
-public func failOrRaise(_ message: String,
-                        file: StaticString,
-                        line: UInt) throws {
-    switch failureBehavior {
-    case .failTest:
+    
+    public func failOrRaise(_ message: String,
+                            file: StaticString,
+                            line: UInt) throws {
+        switch self {
+        case .failTest:
 #if SWIFT_PACKAGE
-        _XCTFail(message, file: file, line: line)
+            _XCTFail(message, file: file, line: line)
 #else
-        XCTFail(message, file: file, line: line)
+            XCTFail(message, file: file, line: line)
 #endif
-    case .raiseException:
-        throw RukaError.unfoundElement
-    case .doNothing:
-        break
+        case .raiseException:
+            throw RukaError.unfoundElement
+        case .doNothing:
+            break
+        }
     }
 }
 
@@ -44,17 +44,17 @@ func _XCTFail(_ message: String = "", file: StaticString = #file, line: UInt = #
             .flatMap({ $0.executablePath })
             .flatMap({ dlopen($0, RTLD_NOW) })
     else { return }
-
+    
     guard
         let _XCTFailureHandler = dlsym(_XCTest, "_XCTFailureHandler")
             .map({ unsafeBitCast($0, to: XCTFailureHandler.self) })
     else { return }
-
+    
     guard
         let _XCTCurrentTestCase = dlsym(_XCTest, "_XCTCurrentTestCase")
             .map({ unsafeBitCast($0, to: XCTCurrentTestCase.self) })
     else { return }
-
+    
     _XCTFailureHandler(_XCTCurrentTestCase(), true, "\(file)", line, message, nil)
 }
 #endif

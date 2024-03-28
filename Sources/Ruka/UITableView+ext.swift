@@ -1,6 +1,6 @@
 //
 //  UITableView+ext.swift
-//  
+//
 //
 //  Created by Enrique Garcia Alvarez on 18/5/23.
 //
@@ -16,13 +16,16 @@ import AppKit
 public extension UITableView {
     func cell(containingText text: String,
               file: StaticString = #filePath,
-              line: UInt = #line) throws -> UITableViewCell? {
+              line: UInt = #line,
+              failureBehavior: FailureBehavior = .failTest) throws -> UITableViewCell? {
         let tableViewCell = self.visibleCells.first(where: { cell -> Bool in
             cell.findViews(subclassOf: UILabel.self).contains { $0.text == text }
         })
 
         if tableViewCell == nil, failureBehavior != FailureBehavior.doNothing {
-            try failOrRaise("Could not find cell containing text '\(text)'.", file: file, line: line)
+            try failureBehavior.failOrRaise("Could not find cell containing text '\(text)'.",
+                                            file: file,
+                                            line: line)
         }
         return tableViewCell
     }

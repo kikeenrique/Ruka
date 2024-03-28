@@ -203,15 +203,15 @@ class Tests: XCTestCase {
 
     func test_findsASpecificCell() throws {
         let app = App(controller: TableViewController(), failureBehavior: .doNothing)
-        XCTAssertNotNil(try app.cell(containingText: "Three"))
+        XCTAssertNotNil(try app.tableView?.cell(containingText: "Three"))
 
         XCTAssertNotNil(try app.label(TableViewController.labelText))
-        XCTAssertNil(try app.cell(containingText: TableViewController.labelText))
+        XCTAssertNil(try app.tableView?.cell(containingText: TableViewController.labelText))
     }
 
     func test_tapsACell() throws {
         let app = App(controller: TableViewController())
-        try app.cell(containingText: "Three")?.tap()
+        try app.tableView?.cell(containingText: "Three")?.tap()
         XCTAssertNotNil(try app.label(RootViewController.labelTextChanged))
     }
 

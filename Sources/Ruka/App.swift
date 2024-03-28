@@ -43,7 +43,8 @@ public struct App {
     public func label(_ identifier: String,
                       file: StaticString = #filePath,
                       line: UInt = #line) throws -> UILabel? {
-        return try controller.getViewBy(identifier)
+        return try controller.getViewBy(identifier,
+                                        failureBehavior: failureBehavior)
     }
 
     // MARK: UIButton
@@ -51,7 +52,8 @@ public struct App {
     public func button(_ identifier: String,
                        file: StaticString = #filePath,
                        line: UInt = #line) throws -> UIButton? {
-        return try controller.getViewBy(identifier)
+        return try controller.getViewBy(identifier,
+                                        failureBehavior: failureBehavior)
     }
 
     public func tapButton(title: String,
@@ -78,7 +80,8 @@ public struct App {
     public func `switch`(_ identifier: String,
                          file: StaticString = #filePath,
                          line: UInt = #line) throws -> UISwitch? {
-        return try controller.getViewBy(identifier)
+        return try controller.getViewBy(identifier,
+                                        failureBehavior: failureBehavior)
     }
 
     // MARK: UIStepper
@@ -86,7 +89,8 @@ public struct App {
     public func stepper(_ identifier: String,
                         file: StaticString = #filePath,
                         line: UInt = #line) throws -> UIStepper? {
-        return try controller.getViewBy(identifier)
+        return try controller.getViewBy(identifier,
+                                        failureBehavior: failureBehavior)
     }
 
     // MARK: UISlider
@@ -94,7 +98,8 @@ public struct App {
     public func slider(_ identifier: String,
                        file: StaticString = #filePath,
                        line: UInt = #line) throws -> UISlider? {
-        return try controller.getViewBy(identifier)
+        return try controller.getViewBy(identifier,
+                                        failureBehavior: failureBehavior)
     }
 
     // MARK: UITextField
@@ -102,7 +107,8 @@ public struct App {
     public func textField(_ identifier: String,
                           file: StaticString = #filePath,
                           line: UInt = #line) throws -> UITextField? {
-        return try controller.getViewBy(identifier)
+        return try controller.getViewBy(identifier,
+                                        failureBehavior: failureBehavior)
     }
 
     // MARK: UIAlertController
