@@ -16,11 +16,15 @@ import AppKit
 
 public extension UITableViewCell {
     func tap() {
-        guard
-            let tableView = superview as? UITableView,
-            let indexPath = tableView.indexPath(for: self)
+        var view = superview
+        while view != nil, !(view is UITableView) {
+            view = view?.superview
+        }
+        
+        guard let tableView = view as? UITableView,
+              let indexPath = tableView.indexPath(for: self)
         else { return }
-
+        
         tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
     }
 }
