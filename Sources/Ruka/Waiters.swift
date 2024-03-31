@@ -1,6 +1,6 @@
 //
 //  Waiters.swift
-//  
+//
 //
 //  Created by Enrique Garcia Alvarez on 26/12/22.
 //
@@ -9,6 +9,12 @@ import Foundation
 import XCTest
 
 public protocol WaitersProtocol {
+    func waitForAnimationsToFinish(window: UIWindow,
+                                   timeout: TimeInterval,
+                                   timeoutCondition: WaitTimeoutCondition,
+                                   file: StaticString,
+                                   line: UInt)
+
     func waitUntil(timeoutCondition: WaitTimeoutCondition,
                    file: StaticString,
                    line: UInt,
@@ -30,6 +36,20 @@ public protocol WaitersProtocol {
 }
 
 extension WaitersProtocol {
+    public func waitForAnimationsToFinish(window: UIWindow,
+                                          timeout: TimeInterval = 10,
+                                          timeoutCondition: WaitTimeoutCondition = .fail,
+                                          file: StaticString = #file,
+                                          line: UInt = #line) {
+        waitOrSkip(timeoutCondition: timeoutCondition,
+                   timeout: timeout,
+                   file: file,
+                   line: line,
+                   block: {
+            window.areAnimationsFinished() ? .success : .wait
+        })
+    }
+
     public func waitUntil(timeoutCondition: WaitTimeoutCondition = .fail,
                           file: StaticString = #file,
                           line: UInt = #line,

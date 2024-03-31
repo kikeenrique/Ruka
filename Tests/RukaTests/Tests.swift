@@ -163,14 +163,21 @@ class Tests: XCTestCase {
 
     func test_dismissesAViewController() throws {
         givenRootVC()
+        // check missing button dismiss
         XCTAssertNil(try window.button(ModalViewController.dismissText,
                                        failureBehavior: .doNothing))
-
+        // tap present button
         try window.tapButton(title: RootViewController.presentText)
+
+        waitForAnimationsToFinish(window: window)
+
+        // check visible button dismiss
         XCTAssertNotNil(try window.button(ModalViewController.dismissText,
                                           failureBehavior: .doNothing))
-
+        // tap dismiss button
         try window.tapButton(title: ModalViewController.dismissText)
+
+        // check missing button dismiss
         XCTAssertNil(try window.button(ModalViewController.dismissText,
                                        failureBehavior: .doNothing))
     }
@@ -204,6 +211,11 @@ class Tests: XCTestCase {
         XCTAssertNil(try window.button(SecondTabViewController.presentText,
                                        failureBehavior: .doNothing))
 
+        (app.controller as? UITabBarController)?.selectedIndex = 1
+        waitFor {
+            let controller = (app.controller as? TabBarViewController)?.secondTabViewController
+            return controller?.isVisible ?? true
+        }
         XCTAssertNotNil(try window.button(SecondTabViewController.presentText,
                                           failureBehavior: .doNothing))
         try window.tapButton(title: SecondTabViewController.presentText)
@@ -223,7 +235,6 @@ class Tests: XCTestCase {
 
     func test_dismissesAnAlert() throws {
         givenRootVC()
-
         try window.tapButton(title: RootViewController.alertText)
         XCTAssertNil(try window.button(RootViewController.alertText,
                                        failureBehavior: .doNothing))

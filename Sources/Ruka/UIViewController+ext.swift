@@ -53,4 +53,8 @@ public extension UIViewController {
 
         return self
     }
+
+    var isVisible: Bool {
+        return self.isViewLoaded && self.view.window != nil
+    }
 }

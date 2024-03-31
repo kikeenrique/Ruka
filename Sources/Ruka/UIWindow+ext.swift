@@ -92,3 +92,74 @@ extension UIWindow {
                                                                         failureBehavior: failureBehavior)
     }
 }
+
+extension UIWindow {
+    func areAnimationsFinished() -> Bool {
+        let views = getAllViews()
+        let logger = Logger(subsystem: "App", category: "App")
+        var howManyAnimating = 0
+        var keys = ["": ""]
+        let noAnimations = views.allSatisfy { view in
+            if !view.isHidden {
+                let layer = view.layer.animationKeys()?.isEmpty ?? true
+                let sublayers = view.layer.sublayers?.allSatisfy { sublayer in
+                    let sublayerHasKeys = sublayer.animationKeys()?.isEmpty ?? true
+                    if !sublayerHasKeys,
+                       let sublayerKeys = sublayer.animationKeys() {
+                        keys[String(describing:view)] = sublayerKeys.joined(separator: ",")
+                        howManyAnimating += 1
+                    }
+                    return sublayerHasKeys
+                } ?? true
+                if !layer,
+                   let layerKeys = view.layer.animationKeys() {
+                    keys[String(describing:view)] = layerKeys.joined(separator: ",")
+                    howManyAnimating += 1
+                }
+                return layer && sublayers
+            } else {
+                return true
+            }
+        }
+        logger.debug("\(#function) views:\(views.count) animating:\(String(describing: noAnimations))->\(howManyAnimating)->\(keys)")
+        return noAnimations
+    }
+
+    func getAllViews() -> [UIView] {
+        var allViews = [UIView]()
+
+        if let rootViewController = self.rootViewController {
+            traverseSubviews(of: rootViewController.view,
+                             accumulating: &allViews)
+            // Include views from child view controllers
+            getChildViewControllers(rootViewController).forEach { viewController in
+                traverseSubviews(of: viewController.view,
+                                 accumulating: &allViews)
+            }
+        }
+
+        return allViews
+    }
+
+    private func traverseSubviews(of view: UIView,
+                                  accumulating allViews: inout [UIView]) {
+        allViews.append(view)
+        view.subviews.forEach { subview in
+            traverseSubviews(of: subview,
+                             accumulating: &allViews)
+        }
+    }
+
+    private func getChildViewControllers(_ viewController: UIViewController) -> [UIViewController] {
+        var viewControllers = [UIViewController]()
+        viewControllers.append(contentsOf: viewController.children)
+        viewController.children.forEach { childViewController in
+            viewControllers.append(contentsOf: getChildViewControllers(childViewController))
+        }
+        if let presentedViewController = viewController.presentedViewController {
+            viewControllers.append(presentedViewController)
+            viewControllers.append(contentsOf: getChildViewControllers(presentedViewController))
+        }
+        return viewControllers
+    }
+}
