@@ -2,8 +2,47 @@ import Ruka
 import XCTest
 
 class Tests: XCTestCase {
+    var window: UIWindow!
+    var app: App!
     override func setUpWithError() throws {
+        try super.setUpWithError()
         continueAfterFailure = false
+        window = getCurrentWindow()
+    }
+
+    private func getCurrentWindow() -> UIWindow? {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return nil }
+        return scene.windows.first(where: { $0.isKeyWindow })
+    }
+
+    func givenRootVC() {
+        let controller = RootViewController()
+        app = App(window: window,
+                  controller: controller)
+    }
+
+    func givenRootVCInNavC() {
+        let navigationController = UINavigationController(rootViewController: RootViewController())
+        app = App(window: window,
+                  controller: navigationController)
+    }
+
+    func givenFormVC() {
+        let controller = FormViewController()
+        app = App(window: window,
+                  controller: controller)
+    }
+
+    func givenTabBarVC() {
+        let controller = TabBarViewController()
+        app = App(window: window,
+                  controller: controller)
+    }
+
+    func givenTableVC() {
+        let controller = TableViewController()
+        app = App(window: window,
+                  controller: controller)
     }
 
     // MARK: Storyboard
@@ -15,415 +54,408 @@ class Tests: XCTestCase {
     // MARK: UILabel
 
     func test_findsALabel() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller)
-
-        let label = try app.label(RootViewController.labelText)
+        givenRootVC()
+        let label = try window.label(RootViewController.labelText)
         XCTAssertNotNil(label)
-        XCTAssertEqual(label?.superview?.superview, controller.view)
+        XCTAssertEqual(label?.superview?.superview, app.controller.view)
     }
 
     func test_findsALabelViaTheAccessibilityLabel() throws {
-        let app = App(controller: RootViewController())
-        XCTAssertNotNil(try app.label(RootViewController.labelA11yText))
+        givenRootVC()
+        XCTAssertNotNil(try window.label(RootViewController.labelA11yText))
     }
 
     func test_findsALabelViaTheAccessibilityIdentifier() throws {
-        let app = App(controller: RootViewController())
-        XCTAssertNotNil(try app.label(RootViewController.labelA11yIdentified))
+        givenRootVC()
+        XCTAssertNotNil(try window.label(RootViewController.labelA11yIdentified))
     }
 
     func test_doesNotFindAHiddenLabel() throws {
-        let app = App(controller: RootViewController(),
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.label(RootViewController.labelHiddenText))
+        givenRootVC()
+        XCTAssertNil(try window.label(RootViewController.labelHiddenText,
+                                      failureBehavior: .doNothing))
     }
 
     func test_doesNotFindALabelOffTheScreen() throws {
-        let app = App(controller: RootViewController(),
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.label(RootViewController.labelOffScreen))
+        givenRootVC()
+        XCTAssertNil(try window.label(RootViewController.labelOffScreen,
+                                      failureBehavior: .doNothing))
     }
 
     // MARK: UIButton
 
     func test_findsAButton() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller)
-
-        let button = try app.button(RootViewController.buttonTitle)
+        givenRootVC()
+        let button = try window.button(RootViewController.buttonTitle)
         XCTAssertNotNil(button)
-        XCTAssertEqual(button?.superview?.superview, controller.view)
+        XCTAssertEqual(button?.superview?.superview, app.controller.view)
     }
 
     func test_findsAButtonViaTheAccessibilityLabel() throws {
-        let app = App(controller: RootViewController())
-        XCTAssertNotNil(try app.button("a11y labeled button"))
+        givenRootVC()
+        XCTAssertNotNil(try window.button("a11y labeled button"))
     }
 
     func test_findsAButtonViaTheAccessibilityIdentifier() throws {
-        let app = App(controller: RootViewController())
-        XCTAssertNotNil(try app.button("a11y identified button"))
+        givenRootVC()
+        XCTAssertNotNil(try window.button("a11y identified button"))
     }
 
     func test_doesNotFindAHiddenButton() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller,
-                      failureBehavior: .doNothing)
+        givenRootVC()
 
-        XCTAssertNil(try app.button(RootViewController.buttonTitleHidden))
+        XCTAssertNil(try window.button(RootViewController.buttonTitleHidden,
+                                       failureBehavior: .doNothing))
     }
 
     func test_doesNotFindAButtonOffTheScreen() throws {
-        let app = App(controller: RootViewController(),
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.button(RootViewController.offScreenButtonTitle))
+        XCTAssertNil(try window.button(RootViewController.offScreenButtonTitle,
+                                       failureBehavior: .doNothing))
     }
 
     func test_tapsAButton() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller)
+        givenRootVC()
 
-        try app.tapButton(title: RootViewController.buttonTitle)
+        try window.tapButton(title: RootViewController.buttonTitle)
 
-        _ = try app.label(RootViewController.labelTextChanged)
+        _ = try window.label(RootViewController.labelTextChanged)
     }
 
     func test_doesNotTapADisabledButton() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller,
-                      failureBehavior: .doNothing)
+        givenRootVC()
 
-        try app.tapButton(title: RootViewController.disableButtonTitle)
+        try window.tapButton(title: RootViewController.disabledButtonTitle,
+                             tappable: false)
 
-        XCTAssertNil(try app.label(RootViewController.labelTextChanged))
+        XCTAssertNil(try window.label(RootViewController.labelTextChanged,
+                                      failureBehavior: .doNothing))
     }
 
     // MARK: UINavigationController
 
     func test_pushesAViewController() throws {
-        let navigationController = UINavigationController(rootViewController: RootViewController())
-        let app = App(controller: navigationController)
+        givenRootVCInNavC()
 
-        try app.tapButton(title: "Push view controller")
+        try window.tapButton(title: RootViewController.pushText)
 
-        XCTAssertEqual(navigationController.viewControllers.count, 2)
+        XCTAssertEqual((app.controller as? UINavigationController)?.viewControllers.count, 2)
     }
 
     func test_popsAViewController() throws {
-        let navigationController = UINavigationController(rootViewController: RootViewController())
-        let app = App(controller: navigationController)
+        givenRootVCInNavC()
 
-        try app.tapButton(title: "Push view controller")
-        XCTAssertEqual(navigationController.viewControllers.count, 2)
+        try window.tapButton(title: RootViewController.pushText)
+        XCTAssertEqual((app.controller as? UINavigationController)?.viewControllers.count, 2)
 
-        try app.tapButton(title: "Pop view controller")
-        XCTAssertEqual(navigationController.viewControllers.count, 1)
+        try window.tapButton(title: RootViewController.popText)
+        XCTAssertEqual((app.controller as? UINavigationController)?.viewControllers.count, 1)
     }
 
     // MARK: Modal view controllers
 
     func test_presentsAViewController() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller)
+        givenRootVC()
 
-        try app.tapButton(title: "Present view controller")
+        try window.tapButton(title: RootViewController.presentText)
 
-        XCTAssertNotNil(controller.presentedViewController)
+        XCTAssertNotNil(app.controller.presentedViewController)
     }
 
     func test_dismissesAViewController() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller,
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.button("Dismiss view controller"))
+        givenRootVC()
+        XCTAssertNil(try window.button(ModalViewController.dismissText,
+                                       failureBehavior: .doNothing))
 
-        try app.tapButton(title: "Present view controller")
-        XCTAssertNotNil(try app.button("Dismiss view controller"))
+        try window.tapButton(title: RootViewController.presentText)
+        XCTAssertNotNil(try window.button(ModalViewController.dismissText,
+                                          failureBehavior: .doNothing))
 
-        try app.tapButton(title: "Dismiss view controller")
-        XCTAssertNil(try app.button("Dismiss view controller"))
+        try window.tapButton(title: ModalViewController.dismissText)
+        XCTAssertNil(try window.button(ModalViewController.dismissText,
+                                       failureBehavior: .doNothing))
     }
-    
+
     func test_dismissNestedModalViewController() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller, 
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.button("Dismiss view controller"))
+        givenRootVC()
+        XCTAssertNil(try window.button(ModalViewController.dismissText,
+                                       failureBehavior: .doNothing))
 
-        try app.tapButton(title: "Present view controller")
-        XCTAssertNotNil(try app.button("Dismiss view controller"))
-        
-        try app.tapButton(title: "Present view controller")
-        XCTAssertNotNil(try app.button("Dismiss view controller"))
+        try window.tapButton(title: ModalViewController.presentText)
+        XCTAssertNotNil(try window.button(ModalViewController.dismissText,
+                                          failureBehavior: .doNothing))
 
-        try app.tapButton(title: "Dismiss view controller")
-        XCTAssertNotNil(try app.button("Dismiss view controller"))
-        
-        try app.tapButton(title: "Dismiss view controller")
-        XCTAssertNil(try app.button("Dismiss view controller"))
+        try window.tapButton(title: ModalViewController.presentText)
+        XCTAssertNotNil(try window.button(NestedModalViewController.dismissText,
+                                          failureBehavior: .doNothing))
+
+        try window.tapButton(title: NestedModalViewController.dismissText)
+        XCTAssertNotNil(try window.button(ModalViewController.dismissText,
+                                          failureBehavior: .doNothing))
+
+        try window.tapButton(title: ModalViewController.dismissText)
+        XCTAssertNil(try window.button(ModalViewController.dismissText,
+                                       failureBehavior: .doNothing))
     }
-    
-    // MARK: UITabBarController
-    
-    func test_presentsAViewControllerOnSecondTabInTabBarController() throws {
-        let tabBarController = TabBarViewController()
-        let app = App(controller: tabBarController,
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.button("Present view controller from second tab"))
 
-        tabBarController.selectedIndex = 1
-        XCTAssertNotNil(try app.button("Present view controller from second tab"))
-        try app.tapButton(title: "Present view controller from second tab")
-        
-        XCTAssertNotNil(tabBarController.secondTabViewController.presentedViewController)
+    // MARK: UITabBarController
+
+    func test_presentsAViewControllerOnSecondTabInTabBarController() throws {
+        givenTabBarVC()
+        XCTAssertNil(try window.button(SecondTabViewController.presentText,
+                                       failureBehavior: .doNothing))
+
+        XCTAssertNotNil(try window.button(SecondTabViewController.presentText,
+                                          failureBehavior: .doNothing))
+        try window.tapButton(title: SecondTabViewController.presentText)
+
+        XCTAssertNotNil((app.controller as? TabBarViewController)?.secondTabViewController.presentedViewController)
     }
 
     // MARK: UIAlertController
 
     func test_findsAnAlert() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller)
+        givenRootVC()
 
-        try app.tapButton(title: "Show alert")
-        XCTAssertNotNil(try app.label("Alert title"))
-        XCTAssertNotNil(try app.label("Alert message."))
+        try window.tapButton(title: RootViewController.alertText)
+        XCTAssertNotNil(try window.label("Alert title"))
+        XCTAssertNotNil(try window.label("Alert message."))
     }
 
     func test_dismissesAnAlert() throws {
-        let controller = RootViewController()
-        let app = App(controller: controller, 
-                      failureBehavior: .doNothing)
+        givenRootVC()
 
-        try app.tapButton(title: "Show alert")
-        XCTAssertNil(try app.button("Show alert"))
+        try window.tapButton(title: RootViewController.alertText)
+        XCTAssertNil(try window.button(RootViewController.alertText,
+                                       failureBehavior: .doNothing))
 
         app.alertViewController?.tapButton(title: "Dismiss")
-        XCTAssertNotNil(try app.button("Show alert"))
-        XCTAssertNotNil(try app.label(RootViewController.labelTextChanged))
+        XCTAssertNotNil(try window.button(RootViewController.alertText,
+                                          failureBehavior: .doNothing))
+        XCTAssertNotNil(try window.label(RootViewController.labelTextChanged,
+                                         failureBehavior: .doNothing))
     }
 
     // MARK: UITableView
 
     func test_findsVisibleCells() throws {
-        let app = App(controller: TableViewController())
+        givenTableVC()
         XCTAssertEqual(app.tableView?.visibleCells.count ?? 0, 3)
     }
 
     func test_findsASpecificCell() throws {
-        let app = App(controller: TableViewController(), 
-                      failureBehavior: .doNothing)
+        givenTableVC()
         XCTAssertNotNil(try app.tableView?.cell(containingText: "Three"))
-        XCTAssertNotNil(try app.label(RootViewController.labelText))
+        XCTAssertNotNil(try window.label(RootViewController.labelText,
+                                         failureBehavior: .doNothing))
 
         XCTAssertNil(try app.tableView?.cell(containingText: TableViewController.labelText,
                                              failureBehavior: .doNothing))
     }
 
     func test_tapsACell() throws {
-        let app = App(controller: TableViewController())
+        givenTableVC()
         try app.tableView?.cell(containingText: "Three")?.tap()
-        XCTAssertNotNil(try app.label(RootViewController.labelTextChanged))
+        XCTAssertNotNil(try window.label(RootViewController.labelTextChanged))
     }
 
     // MARK: UISwitch
 
 #if !os(tvOS)
     func test_findsASwitchViaTheAccessibilityLabel() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.switch("a11y labeled switch"))
+        givenFormVC()
+        XCTAssertNotNil(try window.switch("a11y labeled switch"))
     }
 
     func test_findsASwitchViaTheAccessibilityIdentifier() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.switch("a11y identified switch"))
+        givenFormVC()
+        XCTAssertNotNil(try window.switch("a11y identified switch"))
     }
 
     func test_doesNotFindAHiddenSwitch() throws {
-        let app = App(controller: FormViewController(), 
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.switch("A hidden switch"))
+        givenFormVC()
+        XCTAssertNil(try window.switch("A hidden switch",
+                                       failureBehavior: .doNothing))
     }
 
     func test_doesNotFindASwitchOffTheScreen() throws {
-        let app = App(controller: FormViewController(),
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.switch("An off screen switch"))
+        givenFormVC()
+        XCTAssertNil(try window.switch("An off screen switch",
+                                       failureBehavior: .doNothing))
     }
 
     func test_togglesASwitch() throws {
-        let app = App(controller: FormViewController())
-        let `switch` = try app.switch("A switch")
-        XCTAssertNotNil(try app.label("Disabled"))
+        givenFormVC()
+        let Aswitch = try window.switch("A switch")
+        XCTAssertNotNil(try window.label("Disabled"))
 
-        `switch`?.toggle()
-        XCTAssertNotNil(try app.label("Enabled"))
+        Aswitch?.toggle()
+        XCTAssertNotNil(try window.label("Enabled"))
     }
 
     func test_doesNotToggleADisabledSwitch() throws {
-        let app = App(controller: FormViewController())
-        let `switch` = try app.switch("A disabled switch")
-        XCTAssertNotNil(try app.label("Disabled"))
+        givenFormVC()
+        let Aswitch = try window.switch("A disabled switch")
+        XCTAssertNotNil(try window.label("Disabled"))
 
-        `switch`?.toggle()
-        XCTAssertNotNil(try app.label("Disabled"))
+        Aswitch?.toggle()
+        XCTAssertNotNil(try window.label("Disabled"))
     }
     // MARK: UIStepper
 
     func test_findsAStepperViaTheAccessibilityLabel() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.stepper("a11y labeled stepper"))
+        givenFormVC()
+        XCTAssertNotNil(try window.stepper("a11y labeled stepper"))
     }
 
     func test_findsAStepperViaTheAccessibilityIdentifier() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.stepper("a11y identified stepper"))
+        givenFormVC()
+        XCTAssertNotNil(try window.stepper("a11y identified stepper"))
     }
 
     func test_doesNotFindAHiddenStepper() throws {
-        let app = App(controller: FormViewController(), 
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.stepper("A hidden stepper"))
+        givenFormVC()
+        XCTAssertNil(try window.stepper("A hidden stepper",
+                                        failureBehavior: .doNothing))
     }
 
     func test_doesNotFindAStepperOffTheScreen() throws {
-        let app = App(controller: FormViewController(), 
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.stepper("An off screen stepper"))
+        givenFormVC()
+        XCTAssertNil(try window.stepper("An off screen stepper",
+                                        failureBehavior: .doNothing))
     }
 
     func test_incrementsAStepper() throws {
-        let app = App(controller: FormViewController())
-        try app.stepper("A stepper")?.increment()
-        XCTAssertNotNil(try app.label("3.0"))
+        givenFormVC()
+        try window.stepper("A stepper")?.increment()
+        XCTAssertNotNil(try window.label("3.0"))
     }
 
     func test_decrementsAStepper() throws {
-        let app = App(controller: FormViewController())
-        try app.stepper("A stepper")?.decrement()
-        XCTAssertNotNil(try app.label("1.0"))
+        givenFormVC()
+        try window.stepper("A stepper")?.decrement()
+        XCTAssertNotNil(try window.label("1.0"))
     }
 
     func test_doesNotIncrementADisabledStepper() throws {
-        let app = App(controller: FormViewController())
-        try app.stepper("A disabled stepper")?.increment()
-        XCTAssertNotNil(try app.label("2.0"))
+        givenFormVC()
+        try window.stepper("A disabled stepper")?.increment()
+        XCTAssertNotNil(try window.label("2.0"))
     }
 
     func test_doesNotDecrementADisabledStepper() throws {
-        let app = App(controller: FormViewController())
-        try app.stepper("A disabled stepper")?.decrement()
-        XCTAssertNotNil(try app.label("2.0"))
+        givenFormVC()
+        try window.stepper("A disabled stepper")?.decrement()
+        XCTAssertNotNil(try window.label("2.0"))
     }
 
     // MARK: UISlider
 
     func test_findsASliderViaTheAccessibilityLabel() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.slider("a11y labeled slider"))
+        givenFormVC()
+        XCTAssertNotNil(try window.slider("a11y labeled slider"))
     }
 
     func test_findsASliderViaTheAccessibilityIdentifier() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.slider("a11y identified slider"))
+        givenFormVC()
+        XCTAssertNotNil(try window.slider("a11y identified slider"))
     }
 
     func test_doesNotFindAHiddenSlider() throws {
-        let app = App(controller: FormViewController(), 
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.slider("A hidden slider"))
+        givenFormVC()
+        XCTAssertNil(try window.slider("A hidden slider",
+                                       failureBehavior: .doNothing))
     }
 
     func test_doesNotFindASliderOffTheScreen() throws {
-        let app = App(controller: FormViewController(), 
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.slider("An off screen slider"))
+        givenFormVC()
+        XCTAssertNil(try window.slider("An off screen slider",
+                                       failureBehavior: .doNothing))
     }
 
     func test_setsASlidersValue() throws {
-        let app = App(controller: FormViewController())
-        try app.slider("A slider")?.set(value: 30)
-        XCTAssertNotNil(try app.label("30.0"))
+        givenFormVC()
+        try window.slider("A slider")?.set(value: 30)
+        XCTAssertNotNil(try window.label("30.0"))
     }
 
     func test_doesNotSetADisabledSlidersValue() throws {
-        let app = App(controller: FormViewController())
-        try app.slider("A disabled slider")?.set(value: 30)
-        XCTAssertNotNil(try app.label("20.0"))
+        givenFormVC()
+        try window.slider("A disabled slider")?.set(value: 30)
+        XCTAssertNotNil(try window.label("20.0"))
     }
 #endif
 
     // MARK: UITextField
 
     func test_findsATextFieldViaThePlaceholder() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.textField("Text field placeholder"))
+        givenFormVC()
+        XCTAssertNotNil(try window.textField("Text field placeholder"))
     }
 
     func test_findsATextFieldViaTheAccessibilityLabel() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.textField("a11y labeled text field"))
+        givenFormVC()
+        XCTAssertNotNil(try window.textField("a11y labeled text field"))
     }
 
     func test_findsATextFieldViaTheAccessibilityIdentifier() throws {
-        let app = App(controller: FormViewController())
-        XCTAssertNotNil(try app.textField("a11y identified text field"))
+        givenFormVC()
+        XCTAssertNotNil(try window.textField("a11y identified text field"))
     }
 
     func test_doesNotFindAHiddenTextField() throws {
-        let app = App(controller: FormViewController(), 
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.textField("Hidden text field placeholder"))
+        givenFormVC()
+        XCTAssertNil(try window.textField("Hidden text field placeholder",
+                                          failureBehavior: .doNothing))
     }
 
     func test_doesNotFindATextFieldOffTheScreen() throws {
-        let app = App(controller: FormViewController(),
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.textField("Off screen text field placeholder"))
+        givenFormVC()
+        XCTAssertNil(try window.textField("Off screen text field placeholder",
+                                          failureBehavior: .doNothing))
     }
 
     func test_typesIntoATextField() throws {
-        let app = App(controller: FormViewController())
-        let textField = try app.textField("Text field placeholder")
+        givenFormVC()
+        let textField = try window.textField("Text field placeholder")
 
         textField?.type(text: "Some typed text.")
         XCTAssertEqual(textField?.text, "Some typed text.")
-        XCTAssertNotNil(try app.label("Some typed text."))
+        XCTAssertNotNil(try window.label("Some typed text."))
     }
 
     func test_doesNotTypeIntoADisabledTextField() throws {
-        let app = App(controller: FormViewController(),
-                      failureBehavior: .doNothing)
-        let textField = try app.textField("Disabled text field placeholder")
+        givenFormVC()
+        let textField = try window.textField("Disabled text field placeholder",
+                                             failureBehavior: .doNothing)
 
         textField?.type(text: "Some typed text.")
         XCTAssertEqual(textField?.text, "")
-        XCTAssertNil(try app.label("Some typed text."))
+        XCTAssertNil(try window.label("Some typed text.",
+                                      failureBehavior: .doNothing))
     }
 
     // MARK: Failure behavior
 
     func test_aMissingElement_raisesAnError() throws {
-        let app = App(controller: RootViewController(), 
-                      failureBehavior: .raiseException)
-        XCTAssertThrowsError(try app.label("Missing element"))
+        givenRootVC()
+        XCTAssertThrowsError(try window.label("Missing element",
+                                              failureBehavior: .raiseException))
     }
-
+    
     func test_aMissingElement_isNil() throws {
-        let app = App(controller: RootViewController(), 
-                      failureBehavior: .doNothing)
-        XCTAssertNil(try app.label("Missing element"))
+        givenRootVC()
+        XCTAssertNil(try window.label("Missing element",
+                                      failureBehavior: .doNothing))
     }
 
     func test_aMissingElement_fails() throws {
-        let app = App(controller: RootViewController(), 
-                      failureBehavior: .failTest)
+        givenRootVC()
         let options = XCTExpectedFailure.Options()
         options.issueMatcher = { issue in
             issue.type == .assertionFailure &&
-                          issue.compactDescription.contains("Could not find view with")
+            issue.compactDescription.contains("Could not find view with")
         }
         XCTExpectFailure("This test is expected to fail.", options: options)
-        XCTAssertNil(try app.label("Missing element"))
+        XCTAssertNil(try window.label("Missing element"))
     }
 }

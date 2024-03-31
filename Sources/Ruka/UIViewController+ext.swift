@@ -38,17 +38,17 @@ public extension UIViewController {
         return view
     }
 
-    func visibleViewController() -> UIViewController? {
+    var visibleViewController: UIViewController? {
         if let navigationController = self as? UINavigationController {
-            return navigationController.topViewController?.visibleViewController()
+            return navigationController.topViewController?.visibleViewController
         }
 
         if let tabBarController = self as? UITabBarController {
-            return tabBarController.selectedViewController?.visibleViewController()
+            return tabBarController.selectedViewController?.visibleViewController
         }
 
         if let presentedViewController = self.presentedViewController {
-            return presentedViewController.visibleViewController()
+            return presentedViewController.visibleViewController
         }
 
         return self

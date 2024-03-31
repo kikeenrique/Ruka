@@ -16,114 +16,45 @@ import AppKit
 import XCTest
 
 public struct App {
-    public init(window: UIWindow = UIWindow(),
-                controller: UIViewController,
-                failureBehavior: FailureBehavior = .failTest) {
-        self.window = window
-        self.failureBehavior = failureBehavior
+    public init(window: UIWindow?,
+                controller: UIViewController) {
+        self.window = window ?? UIWindow()
+        self.controller = controller
 
         load(controller: controller)
     }
 
-    public init(window: UIWindow = UIWindow(),
+    public init(window: UIWindow?,
                 storyboard: String,
                 bundle: Bundle?,
-                identifier: String,
-                failureBehavior: FailureBehavior = .failTest) {
-        self.window = window
-        self.failureBehavior = failureBehavior
+                identifier: String) {
+        self.window = window ?? UIWindow()
 
         let storyboard = UIStoryboard(name: storyboard, bundle: bundle)
         let controller = storyboard.instantiateViewController(withIdentifier: identifier)
+        self.controller = controller
         load(controller: controller)
-    }
-
-    // MARK: UILabel
-
-    public func label(_ identifier: String,
-                      file: StaticString = #filePath,
-                      line: UInt = #line) throws -> UILabel? {
-        return try controller.getViewBy(identifier,
-                                        failureBehavior: failureBehavior)
-    }
-
-    // MARK: UIButton
-
-    public func button(_ identifier: String,
-                       file: StaticString = #filePath,
-                       line: UInt = #line) throws -> UIButton? {
-        return try controller.getViewBy(identifier,
-                                        failureBehavior: failureBehavior)
-    }
-
-    public func tapButton(title: String,
-                          file: StaticString = #filePath,
-                          line: UInt = #line) throws {
-        guard let button = try button(title), button.isEnabled else { return }
-
-        let windowBeforeTap = window
-        button.sendActions(for: .touchUpInside)
-
-        // Controller containing button is being popped off of navigation stack, wait for animation.
-        let timeInterval: Animation.Length = windowBeforeTap != button.window ? .popController : .short
-        RunLoop.main.run(until: Date().addingTimeInterval(timeInterval.rawValue))
     }
 
     // MARK: UITableView
 
     public var tableView: UITableView? {
-        controller.view.findViews(subclassOf: UITableView.self).first
-    }
-
-    // MARK: UISwitch
-    @available(tvOS, unavailable)
-    public func `switch`(_ identifier: String,
-                         file: StaticString = #filePath,
-                         line: UInt = #line) throws -> UISwitch? {
-        return try controller.getViewBy(identifier,
-                                        failureBehavior: failureBehavior)
-    }
-
-    // MARK: UIStepper
-
-    @available(tvOS, unavailable)
-    public func stepper(_ identifier: String,
-                        file: StaticString = #filePath,
-                        line: UInt = #line) throws -> UIStepper? {
-        return try controller.getViewBy(identifier,
-                                        failureBehavior: failureBehavior)
-    }
-
-    // MARK: UISlider
-
-    @available(tvOS, unavailable)
-    public func slider(_ identifier: String,
-                       file: StaticString = #filePath,
-                       line: UInt = #line) throws -> UISlider? {
-        return try controller.getViewBy(identifier,
-                                        failureBehavior: failureBehavior)
-    }
-
-    // MARK: UITextField
-
-    public func textField(_ identifier: String,
-                          file: StaticString = #filePath,
-                          line: UInt = #line) throws -> UITextField? {
-        return try controller.getViewBy(identifier,
-                                        failureBehavior: failureBehavior)
+        rootViewControllerVisible.view.findViews(subclassOf: UITableView.self).first
     }
 
     // MARK: UIAlertController
 
     public var alertViewController: UIAlertController? {
-        controller as? UIAlertController
+        rootViewControllerVisible as? UIAlertController
     }
 
     // MARK: Private
 
-    private let failureBehavior: FailureBehavior
     private let window: UIWindow!
-    private var controller: UIViewController! { window.rootViewController?.visibleViewController() }
+    public let controller: UIViewController!
+    private var rootViewControllerVisible: UIViewController! {
+        window.rootViewController?.visibleViewController
+    }
 
     private func load(controller: UIViewController) {
         window.rootViewController = controller
@@ -133,7 +64,7 @@ public struct App {
     }
     
     private func viewIsVisibleInController(_ view: UIView) -> Bool {
-        view.frame.intersects(controller.view.bounds)
+        view.frame.intersects(rootViewControllerVisible.view.bounds)
     }
 
 }
