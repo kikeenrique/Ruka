@@ -31,6 +31,7 @@
 		84E75E3E258039E7001F8290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E75E3D258039E7001F8290 /* SceneDelegate.swift */; };
 		84E75E40258039E7001F8290 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E75E3F258039E7001F8290 /* MainViewController.swift */; };
 		84E75E45258039E8001F8290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E75E44258039E8001F8290 /* Assets.xcassets */; };
+		C01856B42BB736DA000C8B26 /* UIWindow+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */; };
 		C01EEAAD2908944400B0CE34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01EEAAC2908944400B0CE34 /* XCTest.framework */; };
 		C0D793712BB5C5A80084E4A3 /* WaitResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */; };
 		C0D793722BB5C5A80084E4A3 /* UISlider+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */; };
@@ -78,6 +79,13 @@
 			remoteGlobalIDString = "Ruka::RukaTests";
 			remoteInfo = RukaTests;
 		};
+		C01856B52BB78B7F000C8B26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84E75E38258039E7001F8290;
+			remoteInfo = "Host App";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +106,7 @@
 		84E75E3F258039E7001F8290 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		84E75E44258039E8001F8290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84E75E49258039E8001F8290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+ext.swift"; sourceTree = "<group>"; };
 		C01EEAAC2908944400B0CE34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitResult.swift; sourceTree = "<group>"; };
 		C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ext.swift"; sourceTree = "<group>"; };
@@ -269,6 +278,7 @@
 				847AF242258982F100D81C33 /* UIView+Identifiable.swift */,
 				84146B132580386900A9768A /* UIView+SubviewFinder.swift */,
 				C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */,
+				C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */,
 				C0D793672BB5C5A80084E4A3 /* Waiters.swift */,
 				C0D793612BB5C5A80084E4A3 /* WaitersConcurrency.swift */,
 				C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */,
@@ -327,6 +337,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C01856B62BB78B7F000C8B26 /* PBXTargetDependency */,
 				OBJ_54 /* PBXTargetDependency */,
 			);
 			name = RukaTests;
@@ -418,6 +429,7 @@
 				C0D793782BB5C5A80084E4A3 /* WaitTimeoutCondition.swift in Sources */,
 				C0D793762BB5C5A80084E4A3 /* WaitersConcurrency.swift in Sources */,
 				847AF23225897D8200D81C33 /* Identifiable.swift in Sources */,
+				C01856B42BB736DA000C8B26 /* UIWindow+ext.swift in Sources */,
 				C0D793852BB5C5A80084E4A3 /* UIButton+ext.swift in Sources */,
 				C0D793732BB5C5A80084E4A3 /* UIViewController+ext.swift in Sources */,
 				C0D793822BB5C5A80084E4A3 /* XCUIElementQuery+ext.swift in Sources */,
@@ -470,6 +482,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C01856B62BB78B7F000C8B26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84E75E38258039E7001F8290 /* Host App */;
+			targetProxy = C01856B52BB78B7F000C8B26 /* PBXContainerItemProxy */;
+		};
 		OBJ_42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Ruka::RukaTests" /* RukaTests */;
