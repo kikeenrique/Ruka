@@ -8,11 +8,13 @@ import AppKit
 
 class TabBarViewController: UITabBarController {
 
-    let secondTabViewController = SecondTabViewController()
+    public let secondTabViewController = SecondTabViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = [RootViewController(), UINavigationController(rootViewController: secondTabViewController)]
+        let root = RootViewController()
+        viewControllers = [root,
+                           UINavigationController(rootViewController: secondTabViewController)]
     }
 }

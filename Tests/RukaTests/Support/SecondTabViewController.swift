@@ -12,6 +12,8 @@ import AppKit
 
 class SecondTabViewController: UIViewController {
 
+    static let presentText = "Present view controller from second tab"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +26,7 @@ class SecondTabViewController: UIViewController {
         label.text = "Second tab"
         
         let button = UIButton(type: .system)
-        button.setTitle("Present view controller from second tab", for: .normal)
+        button.setTitle(Self.presentText, for: .normal)
         button.addTarget(self, action: #selector(presentViewController), for: .touchUpInside)
 
         let stackView = UIStackView(arrangedSubviews: [label, button])

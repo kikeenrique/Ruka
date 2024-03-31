@@ -7,24 +7,34 @@ import AppKit
 
 
 class ModalViewController: UIViewController {
+    static let dismissText = "Dismiss view controller"
+    static let presentText = "Present view controller"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let dismissButton = UIButton(type: .system)
-        dismissButton.setTitle("Dismiss view controller", for: .normal)
-        dismissButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
+        view.backgroundColor = .systemOrange
 
-        let presentModalButton = UIButton(type: .system)
-        presentModalButton.setTitle("Present view controller", for: .normal)
-        presentModalButton.addTarget(self, action: #selector(presentViewController), for: .touchUpInside)
-        
+        let dismissButton = createButton(withTitle: Self.dismissText,
+                                         action: #selector(dismissViewController))
+        let presentModalButton = createButton(withTitle: Self.presentText,
+                                              action: #selector(presentViewController))
+
         let stackView = UIStackView(arrangedSubviews: [dismissButton, presentModalButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
+        stackView.spacing = 20
+        stackView.axis = .vertical
+
         view.addSubview(stackView)
+        let padding: CGFloat = 20  // Define the amount of padding
+
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            stackView.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            stackView.topAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
     }
 
@@ -34,5 +44,23 @@ class ModalViewController: UIViewController {
     
     @objc private func presentViewController() {
         present(NestedModalViewController(), animated: true)
+    }
+
+    private func createButton(withTitle title: String, 
+                              action: Selector) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(title, 
+                        for: .normal)
+        button.addTarget(self, 
+                         action: action,
+                         for: .touchUpInside)
+
+        button.backgroundColor = .systemPink
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+
+        return button
     }
 }
