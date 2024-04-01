@@ -66,5 +66,4 @@ public struct App {
     private func viewIsVisibleInController(_ view: UIView) -> Bool {
         view.frame.intersects(rootViewControllerVisible.view.bounds)
     }
-
 }

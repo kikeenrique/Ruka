@@ -14,7 +14,8 @@ import AppKit
 #endif
 
 extension UIView {
-    func isIdentifiable(by identifier: String, in controller: UIViewController) -> Bool {
+    func isIdentifiable(by identifier: String, 
+                        in controller: UIViewController) -> Bool {
         let identifiable =
             (self as? Identifiable)?.isIdentifiable(by: identifier) ?? false ||
             accessibilityLabel == identifier ||

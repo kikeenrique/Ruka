@@ -7,8 +7,14 @@ import AppKit
 
 
 class FormViewController: UIViewController {
+    static let switchA11yLabelText = "A switch"
+    static let switchA11yLabelHiddenText = "A hidden switch"
+    static let switchA11yLabelDisabledText = "A disabled switch"
+    static let switchLabelDisabledText = "Disabled"
+    static let switchLabelEnabledText = "Enabled"
+
     private let stackView = UIStackView()
-    private let switchlabel = UILabel()
+    private let switchLabel = UILabel()
     private let stepperLabel = UILabel()
     private let sliderLabel = UILabel()
     private let textFieldLabel = UILabel()
@@ -44,9 +50,11 @@ class FormViewController: UIViewController {
 
 #if !os(tvOS)
     private func addSwitches() {
-        _ = addSwitch(accessibilityLabel: "A switch")
-        _ = addSwitch(accessibilityLabel: "A hidden switch", isHidden: true)
-        _ = addSwitch(accessibilityLabel: "A disabled switch", isEnabled: false)
+        _ = addSwitch(accessibilityLabel: Self.switchA11yLabelText)
+        _ = addSwitch(accessibilityLabel: Self.switchA11yLabelHiddenText,
+                      isHidden: true)
+        _ = addSwitch(accessibilityLabel: Self.switchA11yLabelDisabledText,
+                      isEnabled: false)
 
         let a11yLabeledSwitch = addSwitch(accessibilityLabel: "")
         a11yLabeledSwitch.accessibilityIdentifier = "a11y labeled switch"
@@ -56,32 +64,38 @@ class FormViewController: UIViewController {
 
         let offScreenSwitch = UISwitch()
         offScreenSwitch.accessibilityLabel = "An off screen switch"
-        offScreenSwitch.addTarget(self, action: #selector(toggleSwitch), for: .valueChanged)
+        offScreenSwitch.addTarget(self, action: #selector(toggleSwitch),
+                                  for: .valueChanged)
         view.addSubview(offScreenSwitch)
         offScreenSwitch.frame.origin.y = -100
 
-        switchlabel.text = "Disabled"
-        stackView.addArrangedSubview(switchlabel)
+        switchLabel.text = Self.switchLabelDisabledText
+        stackView.addArrangedSubview(switchLabel)
     }
 
-    private func addSwitch(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UISwitch {
+    private func addSwitch(accessibilityLabel: String,
+                           isHidden: Bool = false,
+                           isEnabled: Bool = true) -> UISwitch {
         let `switch` = UISwitch()
         `switch`.isHidden = isHidden
         `switch`.isEnabled = isEnabled
         `switch`.accessibilityLabel = accessibilityLabel
-        `switch`.addTarget(self, action: #selector(toggleSwitch), for: .valueChanged)
+        `switch`.addTarget(self, action: #selector(toggleSwitch), 
+                           for: .valueChanged)
         stackView.addArrangedSubview(`switch`)
         return `switch`
     }
 
     @objc private func toggleSwitch(switch: UISwitch) {
-        switchlabel.text = `switch`.isOn ? "Disabled" : "Enabled"
+        switchLabel.text = `switch`.isOn ? Self.switchLabelDisabledText : Self.switchLabelEnabledText
     }
 
     private func addSteppers() {
         _ = addStepper(accessibilityLabel: "A stepper")
-        _ = addStepper(accessibilityLabel: "A hidden stepper", isHidden: true)
-        _ = addStepper(accessibilityLabel: "A disabled stepper", isEnabled: false)
+        _ = addStepper(accessibilityLabel: "A hidden stepper", 
+                       isHidden: true)
+        _ = addStepper(accessibilityLabel: "A disabled stepper",
+                       isEnabled: false)
 
         let a11yLabeledStepper = addStepper(accessibilityLabel: "")
         a11yLabeledStepper.accessibilityLabel = "a11y labeled stepper"
@@ -92,7 +106,8 @@ class FormViewController: UIViewController {
         let offScreenStepper = UIStepper()
         offScreenStepper.accessibilityLabel = "An off screen stepper"
         offScreenStepper.value = 2
-        offScreenStepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
+        offScreenStepper.addTarget(self, action: #selector(changeStepper), 
+                                   for: .valueChanged)
         view.addSubview(offScreenStepper)
         offScreenStepper.frame.origin.y = -100
 
@@ -100,13 +115,16 @@ class FormViewController: UIViewController {
         stackView.addArrangedSubview(stepperLabel)
     }
 
-    private func addStepper(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UIStepper {
+    private func addStepper(accessibilityLabel: String,
+                            isHidden: Bool = false,
+                            isEnabled: Bool = true) -> UIStepper {
         let stepper = UIStepper()
         stepper.value = 2
         stepper.isHidden = isHidden
         stepper.isEnabled = isEnabled
         stepper.accessibilityLabel = accessibilityLabel
-        stepper.addTarget(self, action: #selector(changeStepper), for: .valueChanged)
+        stepper.addTarget(self, action: #selector(changeStepper), 
+                          for: .valueChanged)
         stackView.addArrangedSubview(stepper)
         return stepper
     }
@@ -117,8 +135,10 @@ class FormViewController: UIViewController {
 
     private func addSliders() {
         _ = addSlider(accessibilityLabel: "A slider")
-        _ = addSlider(accessibilityLabel: "A hidden slider", isHidden: true)
-        _ = addSlider(accessibilityLabel: "A disabled slider", isEnabled: false)
+        _ = addSlider(accessibilityLabel: "A hidden slider", 
+                      isHidden: true)
+        _ = addSlider(accessibilityLabel: "A disabled slider", 
+                      isEnabled: false)
 
         let a11yLabeledSlider = addSlider(accessibilityLabel: "")
         a11yLabeledSlider.accessibilityLabel = "a11y labeled slider"
@@ -130,7 +150,8 @@ class FormViewController: UIViewController {
         offScreenSlider.value = 2
         offScreenSlider.maximumValue = 4
         offScreenSlider.accessibilityLabel = "An off screen slider"
-        offScreenSlider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
+        offScreenSlider.addTarget(self, action: #selector(changeSlider), 
+                                  for: .valueChanged)
         view.addSubview(offScreenSlider)
         offScreenSlider.frame.origin.y = -100
 
@@ -138,14 +159,17 @@ class FormViewController: UIViewController {
         stackView.addArrangedSubview(sliderLabel)
     }
 
-    private func addSlider(accessibilityLabel: String, isHidden: Bool = false, isEnabled: Bool = true) -> UISlider {
+    private func addSlider(accessibilityLabel: String, 
+                           isHidden: Bool = false,
+                           isEnabled: Bool = true) -> UISlider {
         let slider = UISlider()
         slider.value = 20
         slider.maximumValue = 40
         slider.isHidden = isHidden
         slider.isEnabled = isEnabled
         slider.accessibilityLabel = accessibilityLabel
-        slider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
+        slider.addTarget(self, action: #selector(changeSlider), 
+                         for: .valueChanged)
         stackView.addArrangedSubview(slider)
         return slider
     }
@@ -157,8 +181,10 @@ class FormViewController: UIViewController {
 
     private func addTextFields() {
         _ = addTextField(placeholder: "Text field placeholder")
-        _ = addTextField(placeholder: "Hidden text field placeholder", isHidden: true)
-        _ = addTextField(placeholder: "Disabled text field placeholder", isEnabled: false)
+        _ = addTextField(placeholder: "Hidden text field placeholder", 
+                         isHidden: true)
+        _ = addTextField(placeholder: "Disabled text field placeholder", 
+                         isEnabled: false)
 
         let a11yLabeledTextField = addTextField(placeholder: "")
         a11yLabeledTextField.accessibilityLabel = "a11y labeled text field"
@@ -175,7 +201,9 @@ class FormViewController: UIViewController {
         stackView.addArrangedSubview(textFieldLabel)
     }
 
-    private func addTextField(placeholder: String, isHidden: Bool = false, isEnabled: Bool = true) -> UITextField {
+    private func addTextField(placeholder: String,
+                              isHidden: Bool = false,
+                              isEnabled: Bool = true) -> UITextField {
         let textField = UITextField()
         textField.placeholder = placeholder
         textField.isHidden = isHidden
@@ -184,13 +212,12 @@ class FormViewController: UIViewController {
         stackView.addArrangedSubview(textField)
         return textField
     }
-
-#if !os(tvOS)
-#endif
 }
 
 extension FormViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, 
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
         textFieldLabel.text = textField.text
         return true
     }

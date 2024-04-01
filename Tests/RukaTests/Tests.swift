@@ -284,7 +284,7 @@ class Tests: XCTestCase {
 
     func test_doesNotFindAHiddenSwitch() throws {
         givenFormVC()
-        XCTAssertNil(try window.switch("A hidden switch",
+        XCTAssertNil(try window.switch(FormViewController.switchA11yLabelHiddenText,
                                        failureBehavior: .doNothing))
     }
 
@@ -296,20 +296,21 @@ class Tests: XCTestCase {
 
     func test_togglesASwitch() throws {
         givenFormVC()
-        let Aswitch = try window.switch("A switch")
-        XCTAssertNotNil(try window.label("Disabled"))
+        let Aswitch = try window.switch(FormViewController.switchA11yLabelText)
+        XCTAssertNotNil(try window.label(FormViewController.switchLabelDisabledText))
 
         Aswitch?.toggle()
-        XCTAssertNotNil(try window.label("Enabled"))
+        XCTAssertNotNil(try window.label(FormViewController.switchLabelEnabledText))
     }
 
     func test_doesNotToggleADisabledSwitch() throws {
         givenFormVC()
-        let Aswitch = try window.switch("A disabled switch")
-        XCTAssertNotNil(try window.label("Disabled"))
+
+        let Aswitch = try window.switch(FormViewController.switchA11yLabelDisabledText)
+        XCTAssertNotNil(try window.label(FormViewController.switchLabelDisabledText))
 
         Aswitch?.toggle()
-        XCTAssertNotNil(try window.label("Disabled"))
+        XCTAssertNotNil(try window.label(FormViewController.switchLabelDisabledText))
     }
     // MARK: UIStepper
 

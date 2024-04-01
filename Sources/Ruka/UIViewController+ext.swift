@@ -20,13 +20,13 @@ public extension UIViewController {
                               line: UInt = #line,
                               failureBehavior: FailureBehavior = .failTest) throws -> T? {
         let views = self.view.findViews(subclassOf: T.self)
-        let view = views.first(where: {
+        let view = views.first(where: { currentView in
             if checkTappable,
-               $0.isIdentifiable(by: identifier, in: self) {
-                let tappable = $0.isTappable()
+               currentView.isIdentifiable(by: identifier, in: self) {
+                let tappable = currentView.isTappable()
                 return tappable
             } else {
-                return $0.isIdentifiable(by: identifier, in: self)
+                return currentView.isIdentifiable(by: identifier, in: self)
             }
         })
 
