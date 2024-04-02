@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import os.log
 
 extension UIWindow {
     // MARK: UILabel
@@ -104,32 +103,18 @@ extension UIWindow {
 extension UIWindow {
     func areAnimationsFinished() -> Bool {
         let views = getAllViews()
-        let logger = Logger(subsystem: "App", category: "App")
-        var howManyAnimating = 0
-        var keys = ["": ""]
         let noAnimations = views.allSatisfy { view in
             if !view.isHidden {
                 let layer = view.layer.animationKeys()?.isEmpty ?? true
                 let sublayers = view.layer.sublayers?.allSatisfy { sublayer in
                     let sublayerHasKeys = sublayer.animationKeys()?.isEmpty ?? true
-                    if !sublayerHasKeys,
-                       let sublayerKeys = sublayer.animationKeys() {
-                        keys[String(describing:view)] = sublayerKeys.joined(separator: ",")
-                        howManyAnimating += 1
-                    }
                     return sublayerHasKeys
                 } ?? true
-                if !layer,
-                   let layerKeys = view.layer.animationKeys() {
-                    keys[String(describing:view)] = layerKeys.joined(separator: ",")
-                    howManyAnimating += 1
-                }
                 return layer && sublayers
             } else {
                 return true
             }
         }
-        logger.debug("\(#function) views:\(views.count) animating:\(String(describing: noAnimations))->\(howManyAnimating)->\(keys)")
         return noAnimations
     }
 

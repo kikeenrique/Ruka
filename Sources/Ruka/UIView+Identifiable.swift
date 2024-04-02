@@ -20,7 +20,7 @@ extension UIView {
             (self as? Identifiable)?.isIdentifiable(by: identifier) ?? false ||
             accessibilityLabel == identifier ||
             accessibilityIdentifier == identifier
-
-        return identifiable && !isHidden && frame.intersects(controller.view.bounds)
+        let found = identifiable && !isHidden && frame.intersects(controller.view.bounds)
+        return found
     }
 }

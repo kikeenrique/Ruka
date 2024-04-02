@@ -15,6 +15,7 @@ import AppKit
 
 extension UIButton: Identifiable {
     func isIdentifiable(by identifier: String) -> Bool {
-        title(for: .normal) == identifier
+        let title = title(for: .normal)
+        return title == identifier
     }
 }
