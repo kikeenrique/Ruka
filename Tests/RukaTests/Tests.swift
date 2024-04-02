@@ -243,6 +243,7 @@ class Tests: XCTestCase {
                                        failureBehavior: .doNothing))
 
         app.alertViewController?.tapButton(title: "Dismiss")
+        waitForAnimationsToFinish(window: window)
         XCTAssertNotNil(try window.button(RootViewController.alertText,
                                           failureBehavior: .doNothing))
         XCTAssertNotNil(try window.label(RootViewController.labelTextChanged,
