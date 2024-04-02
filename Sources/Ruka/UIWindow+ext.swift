@@ -53,10 +53,12 @@ extension UIWindow {
     // MARK: UISwitch
     @available(tvOS, unavailable)
     public func `switch`(_ identifier: String,
+                         tappable: Bool = true,
                          file: StaticString = #filePath,
                          line: UInt = #line,
                          failureBehavior: FailureBehavior = .failTest) throws -> UISwitch? {
         return try rootViewController?.visibleViewController?.getViewBy(identifier,
+                                                                        tappable: tappable,
                                                                         failureBehavior: failureBehavior)
     }
 
@@ -64,10 +66,12 @@ extension UIWindow {
 
     @available(tvOS, unavailable)
     public func stepper(_ identifier: String,
+                        tappable: Bool = true,
                         file: StaticString = #filePath,
                         line: UInt = #line,
                         failureBehavior: FailureBehavior = .failTest) throws -> UIStepper? {
         return try rootViewController?.visibleViewController?.getViewBy(identifier,
+                                                                        tappable: tappable,
                                                                         failureBehavior: failureBehavior)
     }
 
@@ -75,20 +79,24 @@ extension UIWindow {
 
     @available(tvOS, unavailable)
     public func slider(_ identifier: String,
+                       tappable: Bool = true,
                        file: StaticString = #filePath,
                        line: UInt = #line,
                        failureBehavior: FailureBehavior = .failTest) throws -> UISlider? {
         return try rootViewController?.visibleViewController?.getViewBy(identifier,
+                                                                        tappable: tappable,
                                                                         failureBehavior: failureBehavior)
     }
 
     // MARK: UITextField
 
     public func textField(_ identifier: String,
+                          tappable: Bool = true,
                           file: StaticString = #filePath,
                           line: UInt = #line,
                           failureBehavior: FailureBehavior = .failTest) throws -> UITextField? {
         return try rootViewController?.visibleViewController?.getViewBy(identifier,
+                                                                        tappable: tappable,
                                                                         failureBehavior: failureBehavior)
     }
 }

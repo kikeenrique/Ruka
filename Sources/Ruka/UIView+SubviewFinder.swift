@@ -64,6 +64,11 @@ extension UIView {
                     if hitView.isDescendant(of: self) {
                         return window.convert(tapPoint, to: self)
                     } else {
+                        if hitView === self.superview {
+                            // this can happend is view is a uicontrol that is disabled
+                            return window.convert(tapPoint, to: self)
+                        } else {
+                        }
                     }
                 }
             }

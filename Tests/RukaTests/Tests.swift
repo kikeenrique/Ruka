@@ -188,14 +188,17 @@ class Tests: XCTestCase {
                                        failureBehavior: .doNothing))
 
         try window.tapButton(title: ModalViewController.presentText)
+        waitForAnimationsToFinish(window: window)
         XCTAssertNotNil(try window.button(ModalViewController.dismissText,
                                           failureBehavior: .doNothing))
 
         try window.tapButton(title: ModalViewController.presentText)
+        waitForAnimationsToFinish(window: window)
         XCTAssertNotNil(try window.button(NestedModalViewController.dismissText,
                                           failureBehavior: .doNothing))
 
         try window.tapButton(title: NestedModalViewController.dismissText)
+        waitForAnimationsToFinish(window: window)
         XCTAssertNotNil(try window.button(ModalViewController.dismissText,
                                           failureBehavior: .doNothing))
 

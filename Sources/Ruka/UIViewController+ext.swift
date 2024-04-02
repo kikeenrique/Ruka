@@ -22,6 +22,7 @@ public extension UIViewController {
         let views = self.view.findViews(subclassOf: T.self)
         let view = views.first(where: { currentView in
             if checkTappable,
+               currentView.isUserInteractionEnabled,
                currentView.isIdentifiable(by: identifier, in: self) {
                 let tappable = currentView.isTappable()
                 return tappable

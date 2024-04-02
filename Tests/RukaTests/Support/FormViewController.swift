@@ -57,7 +57,7 @@ class FormViewController: UIViewController {
                       isEnabled: false)
 
         let a11yLabeledSwitch = addSwitch(accessibilityLabel: "")
-        a11yLabeledSwitch.accessibilityIdentifier = "a11y labeled switch"
+        a11yLabeledSwitch.accessibilityLabel = "a11y labeled switch"
 
         let a11yIdentifiedSwitch = addSwitch(accessibilityLabel: "")
         a11yIdentifiedSwitch.accessibilityIdentifier = "a11y identified switch"
