@@ -12,9 +12,9 @@ jobs:
             build_type: ['release']
             run-config:
                 - { platform: 'iOS', xcode_version: '14.3.1', simulator: 'name=iPhone 14 Pro' }
-                - { platform: 'iOS', xcode_version: '15.2', simulator: 'name=iPhone 14 Pro' }
-                - { platform: 'iPadOS', xcode_version: '15.2', simulator: 'name=iPad Pro (12.9-inch) (5th generation)' }
-                - { platform: 'tvOS', xcode_version: '15.2', simulator: 'name=Apple TV 4K' }
+                - { platform: 'iOS', xcode_version: '15.2', simulator: 'name=iPhone 15 Pro' }
+                - { platform: 'iPadOS', xcode_version: '15.2', simulator: 'name=iPad Pro (12.9-inch) (6th generation)' }
+                - { platform: 'tvOS', xcode_version: '15.2', simulator: 'name=Apple TV 4K (3rd generation)' }
 
     runs-on: ${{ matrix.os }}
     env:
