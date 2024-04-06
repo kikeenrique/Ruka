@@ -26,10 +26,6 @@
 		841FE7762580457900CBB8BF /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FE7752580457900CBB8BF /* ModalViewController.swift */; };
 		847AF23225897D8200D81C33 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF23125897D8200D81C33 /* Identifiable.swift */; };
 		847AF243258982F100D81C33 /* UIView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF242258982F100D81C33 /* UIView+Identifiable.swift */; };
-		84E75E3C258039E7001F8290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E75E3B258039E7001F8290 /* AppDelegate.swift */; };
-		84E75E3E258039E7001F8290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E75E3D258039E7001F8290 /* SceneDelegate.swift */; };
-		84E75E40258039E7001F8290 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E75E3F258039E7001F8290 /* MainViewController.swift */; };
-		84E75E45258039E8001F8290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E75E44258039E8001F8290 /* Assets.xcassets */; };
 		C01856B42BB736DA000C8B26 /* UIWindow+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */; };
 		C01EEAAD2908944400B0CE34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01EEAAC2908944400B0CE34 /* XCTest.framework */; };
 		C0D793712BB5C5A80084E4A3 /* WaitResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */; };
@@ -78,13 +74,6 @@
 			remoteGlobalIDString = "Ruka::RukaTests";
 			remoteInfo = RukaTests;
 		};
-		C01856B52BB78B7F000C8B26 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 84E75E38258039E7001F8290;
-			remoteInfo = "Host App";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -95,15 +84,12 @@
 		84146B3F258038A300A9768A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		841FE71C25803AF000CBB8BF /* Ruka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ruka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE71D25803AF000CBB8BF /* RukaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RukaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		841FE71E25803AF000CBB8BF /* Host App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Host App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE7752580457900CBB8BF /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		847AF23125897D8200D81C33 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		847AF242258982F100D81C33 /* UIView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifiable.swift"; sourceTree = "<group>"; };
 		84E75E3B258039E7001F8290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84E75E3D258039E7001F8290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84E75E3F258039E7001F8290 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		84E75E44258039E8001F8290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		84E75E49258039E8001F8290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+ext.swift"; sourceTree = "<group>"; };
 		C01EEAAC2908944400B0CE34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C0A1625E2BC14FCE00D5019E /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
@@ -143,13 +129,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		84E75E36258039E7001F8290 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		OBJ_31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -168,17 +147,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84E75E3A258039E7001F8290 /* Host App */ = {
+		84E75E3A258039E7001F8290 /* HostApp */ = {
 			isa = PBXGroup;
 			children = (
 				84146B3F258038A300A9768A /* README.md */,
-				84E75E49258039E8001F8290 /* Info.plist */,
 				84E75E3B258039E7001F8290 /* AppDelegate.swift */,
 				84E75E3D258039E7001F8290 /* SceneDelegate.swift */,
 				84E75E3F258039E7001F8290 /* MainViewController.swift */,
-				84E75E44258039E8001F8290 /* Assets.xcassets */,
 			);
-			path = "Host App";
+			path = HostApp;
 			sourceTree = "<group>";
 		};
 		C01EEAAB2908944300B0CE34 /* Frameworks */ = {
@@ -189,17 +166,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C08C5E4129447A530064A69E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				84E75E3A258039E7001F8290 /* Host App */,
+				84E75E3A258039E7001F8290 /* HostApp */,
 				OBJ_11 /* RukaTests */,
 			);
 			path = Tests;
@@ -208,7 +178,6 @@
 		OBJ_11 /* RukaTests */ = {
 			isa = PBXGroup;
 			children = (
-				C08C5E4129447A530064A69E /* Resources */,
 				OBJ_14 /* Support */,
 				OBJ_12 /* Info.plist */,
 				OBJ_13 /* Tests.swift */,
@@ -242,7 +211,6 @@
 				OBJ_10 /* Tests */,
 				841FE71C25803AF000CBB8BF /* Ruka.framework */,
 				841FE71D25803AF000CBB8BF /* RukaTests.xctest */,
-				841FE71E25803AF000CBB8BF /* Host App.app */,
 				C01EEAAB2908944300B0CE34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -258,7 +226,6 @@
 		OBJ_8 /* Ruka */ = {
 			isa = PBXGroup;
 			children = (
-				84584DCD258E83150098FDEE /* Animation.swift */,
 				84146B112580386900A9768A /* App.swift */,
 				C0D793642BB5C5A80084E4A3 /* FailureBehavior.swift */,
 				847AF23125897D8200D81C33 /* Identifiable.swift */,
@@ -294,23 +261,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84E75E38258039E7001F8290 /* Host App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 84E75E4A258039E8001F8290 /* Build configuration list for PBXNativeTarget "Host App" */;
-			buildPhases = (
-				84E75E35258039E7001F8290 /* Sources */,
-				84E75E36258039E7001F8290 /* Frameworks */,
-				84E75E37258039E7001F8290 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Host App";
-			productName = "Host App";
-			productReference = 841FE71E25803AF000CBB8BF /* Host App.app */;
-			productType = "com.apple.product-type.application";
-		};
 		"Ruka::Ruka" /* Ruka */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_26 /* Build configuration list for PBXNativeTarget "Ruka" */;
@@ -337,7 +287,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				C01856B62BB78B7F000C8B26 /* PBXTargetDependency */,
 				OBJ_54 /* PBXTargetDependency */,
 			);
 			name = RukaTests;
@@ -369,12 +318,18 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
-					84E75E38258039E7001F8290 = {
-						CreatedOnToolsVersion = 12.2;
-						ProvisioningStyle = Automatic;
+					"Ruka::Ruka" = {
+						DevelopmentTeam = SQHHVJ93HM;
+					};
+					"Ruka::RukaPackageTests::ProductTarget" = {
+						DevelopmentTeam = SQHHVJ93HM;
 					};
 					"Ruka::RukaTests" = {
+						DevelopmentTeam = SQHHVJ93HM;
 						TestTargetID = 84E75E38258039E7001F8290;
+					};
+					"Ruka::SwiftPMPackageDescription" = {
+						DevelopmentTeam = SQHHVJ93HM;
 					};
 				};
 			};
@@ -395,33 +350,11 @@
 				"Ruka::SwiftPMPackageDescription" /* RukaPackageDescription */,
 				"Ruka::RukaPackageTests::ProductTarget" /* RukaPackageTests */,
 				"Ruka::RukaTests" /* RukaTests */,
-				84E75E38258039E7001F8290 /* Host App */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		84E75E37258039E7001F8290 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84E75E45258039E8001F8290 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		84E75E35258039E7001F8290 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84E75E40258039E7001F8290 /* MainViewController.swift in Sources */,
-				84E75E3C258039E7001F8290 /* AppDelegate.swift in Sources */,
-				84E75E3E258039E7001F8290 /* SceneDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		OBJ_29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -452,7 +385,6 @@
 				C0D793832BB5C5A80084E4A3 /* UISwitch+ext.swift in Sources */,
 				C0D793772BB5C5A80084E4A3 /* UITableViewCell+ext.swift in Sources */,
 				C0D7937C2BB5C5A80084E4A3 /* Waiters.swift in Sources */,
-				84584DCE258E83150098FDEE /* Animation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,11 +414,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C01856B62BB78B7F000C8B26 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 84E75E38258039E7001F8290 /* Host App */;
-			targetProxy = C01856B52BB78B7F000C8B26 /* PBXContainerItemProxy */;
-		};
 		OBJ_42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Ruka::RukaTests" /* RukaTests */;
@@ -500,124 +427,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		84E75E4B258039E8001F8290 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Host App/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER_HOST)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		84E75E4C258039E8001F8290 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Host App/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER_HOST)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		OBJ_27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -859,15 +668,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84E75E4A258039E8001F8290 /* Build configuration list for PBXNativeTarget "Host App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				84E75E4B258039E8001F8290 /* Debug */,
-				84E75E4C258039E8001F8290 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		OBJ_2 /* Build configuration list for PBXProject "Ruka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
