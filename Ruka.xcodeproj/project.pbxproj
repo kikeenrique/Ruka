@@ -6,20 +6,6 @@
 	objectVersion = 54;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		"Ruka::RukaPackageTests::ProductTarget" /* RukaPackageTests */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = OBJ_39 /* Build configuration list for PBXAggregateTarget "RukaPackageTests" */;
-			buildPhases = (
-			);
-			dependencies = (
-				OBJ_42 /* PBXTargetDependency */,
-			);
-			name = RukaPackageTests;
-			productName = RukaPackageTests;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		84146B172580386900A9768A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B112580386900A9768A /* App.swift */; };
 		84146B192580386900A9768A /* UIView+SubviewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84146B132580386900A9768A /* UIView+SubviewFinder.swift */; };
@@ -52,7 +38,6 @@
 		F2D972DF258A876C0034F592 /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972DE258A876C0034F592 /* SecondTabViewController.swift */; };
 		F2D972E6258AACB10034F592 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972E5258AACB10034F592 /* TabBarViewController.swift */; };
 		F2D972ED258AB0360034F592 /* NestedModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D972EC258AB0360034F592 /* NestedModalViewController.swift */; };
-		OBJ_37 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_48 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Tests.swift */; };
 		OBJ_49 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormViewController.swift */; };
 		OBJ_50 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* RootViewController.swift */; };
@@ -66,13 +51,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = "Ruka::Ruka";
 			remoteInfo = Ruka;
-		};
-		84146B092580385000A9768A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Ruka::RukaTests";
-			remoteInfo = RukaTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -294,20 +272,6 @@
 			productReference = 841FE71D25803AF000CBB8BF /* RukaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		"Ruka::SwiftPMPackageDescription" /* RukaPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_33 /* Build configuration list for PBXNativeTarget "RukaPackageDescription" */;
-			buildPhases = (
-				OBJ_36 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RukaPackageDescription;
-			productName = RukaPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -338,8 +302,6 @@
 			projectRoot = "";
 			targets = (
 				"Ruka::Ruka" /* Ruka */,
-				"Ruka::SwiftPMPackageDescription" /* RukaPackageDescription */,
-				"Ruka::RukaPackageTests::ProductTarget" /* RukaPackageTests */,
 				"Ruka::RukaTests" /* RukaTests */,
 			);
 		};
@@ -379,14 +341,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_36 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_37 /* Package.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		OBJ_47 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -405,11 +359,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_42 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Ruka::RukaTests" /* RukaTests */;
-			targetProxy = 84146B092580385000A9768A /* PBXContainerItemProxy */;
-		};
 		OBJ_54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Ruka::Ruka" /* Ruka */;
@@ -536,28 +485,6 @@
 			};
 			name = Debug;
 		};
-		OBJ_34 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk -package-description-version 5.3.0";
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		OBJ_35 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk -package-description-version 5.3.0";
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0D793862BB5F78D0084E4A3 /* general.xcconfig */;
@@ -608,18 +535,6 @@
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				USE_HEADERMAP = NO;
 				WATCHOS_DEPLOYMENT_TARGET = 8.0;
-			};
-			name = Release;
-		};
-		OBJ_40 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		OBJ_41 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
 			};
 			name = Release;
 		};
@@ -696,24 +611,6 @@
 			buildConfigurations = (
 				OBJ_27 /* Debug */,
 				OBJ_28 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_33 /* Build configuration list for PBXNativeTarget "RukaPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_34 /* Debug */,
-				OBJ_35 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_39 /* Build configuration list for PBXAggregateTarget "RukaPackageTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_40 /* Debug */,
-				OBJ_41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
