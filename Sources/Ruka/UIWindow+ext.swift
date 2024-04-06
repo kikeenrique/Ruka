@@ -41,12 +41,7 @@ extension UIWindow {
             return
         }
 
-        let windowBeforeTap = window
         button.sendActions(for: .touchUpInside)
-
-        // Controller containing button is being popped off of navigation stack, wait for animation.
-        let timeInterval: Animation.Length = windowBeforeTap != button.window ? .popController : .short
-        RunLoop.main.run(until: Date().addingTimeInterval(timeInterval.rawValue))
     }
 
     // MARK: UISwitch

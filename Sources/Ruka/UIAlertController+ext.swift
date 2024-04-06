@@ -23,8 +23,6 @@ public extension UIAlertController {
             handler(action)
 
             dismiss(animated: false)
-            let animationLength = Animation.Length.dismissAlert.rawValue
-            RunLoop.current.run(until: Date().addingTimeInterval(animationLength))
         }
     }
 }
