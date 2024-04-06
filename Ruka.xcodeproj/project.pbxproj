@@ -14,6 +14,11 @@
 		847AF243258982F100D81C33 /* UIView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF242258982F100D81C33 /* UIView+Identifiable.swift */; };
 		C01856B42BB736DA000C8B26 /* UIWindow+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */; };
 		C01EEAAD2908944400B0CE34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01EEAAC2908944400B0CE34 /* XCTest.framework */; };
+		C0A1628E2BC1B28D00D5019E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A1628D2BC1B28C00D5019E /* AppDelegate.swift */; };
+		C0A162902BC1B28D00D5019E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A1628F2BC1B28D00D5019E /* SceneDelegate.swift */; };
+		C0A162972BC1B28D00D5019E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A162962BC1B28D00D5019E /* Assets.xcassets */; };
+		C0A162A12BC1B4A000D5019E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C0A1629F2BC1B4A000D5019E /* README.md */; };
+		C0A162A22BC1B4A000D5019E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A162A02BC1B4A000D5019E /* MainViewController.swift */; };
 		C0D793712BB5C5A80084E4A3 /* WaitResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */; };
 		C0D793722BB5C5A80084E4A3 /* UISlider+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */; };
 		C0D793732BB5C5A80084E4A3 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */; };
@@ -52,6 +57,13 @@
 			remoteGlobalIDString = "Ruka::Ruka";
 			remoteInfo = Ruka;
 		};
+		C0A162A32BC1B5B600D5019E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0A1628A2BC1B28C00D5019E;
+			remoteInfo = HostApp;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -59,18 +71,21 @@
 		84146B102580386900A9768A /* Ruka.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ruka.h; sourceTree = "<group>"; };
 		84146B112580386900A9768A /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		84146B132580386900A9768A /* UIView+SubviewFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SubviewFinder.swift"; sourceTree = "<group>"; };
-		84146B3F258038A300A9768A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		841FE71C25803AF000CBB8BF /* Ruka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ruka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE71D25803AF000CBB8BF /* RukaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RukaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FE7752580457900CBB8BF /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		847AF23125897D8200D81C33 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		847AF242258982F100D81C33 /* UIView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifiable.swift"; sourceTree = "<group>"; };
-		84E75E3B258039E7001F8290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84E75E3D258039E7001F8290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		84E75E3F258039E7001F8290 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+ext.swift"; sourceTree = "<group>"; };
 		C01EEAAC2908944400B0CE34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C0A1625E2BC14FCE00D5019E /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
+		C0A1628B2BC1B28C00D5019E /* HostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0A1628D2BC1B28C00D5019E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0A1628F2BC1B28D00D5019E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C0A162962BC1B28D00D5019E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0A1629B2BC1B28D00D5019E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0A1629F2BC1B4A000D5019E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C0A162A02BC1B4A000D5019E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitResult.swift; sourceTree = "<group>"; };
 		C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ext.swift"; sourceTree = "<group>"; };
 		C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
@@ -107,6 +122,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C0A162882BC1B28C00D5019E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -125,17 +147,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84E75E3A258039E7001F8290 /* HostApp */ = {
-			isa = PBXGroup;
-			children = (
-				84146B3F258038A300A9768A /* README.md */,
-				84E75E3B258039E7001F8290 /* AppDelegate.swift */,
-				84E75E3D258039E7001F8290 /* SceneDelegate.swift */,
-				84E75E3F258039E7001F8290 /* MainViewController.swift */,
-			);
-			path = HostApp;
-			sourceTree = "<group>";
-		};
 		C01EEAAB2908944300B0CE34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,10 +155,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C0A1628C2BC1B28C00D5019E /* HostApp */ = {
+			isa = PBXGroup;
+			children = (
+				C0A1628D2BC1B28C00D5019E /* AppDelegate.swift */,
+				C0A162962BC1B28D00D5019E /* Assets.xcassets */,
+				C0A1629B2BC1B28D00D5019E /* Info.plist */,
+				C0A162A02BC1B4A000D5019E /* MainViewController.swift */,
+				C0A1629F2BC1B4A000D5019E /* README.md */,
+				C0A1628F2BC1B28D00D5019E /* SceneDelegate.swift */,
+			);
+			path = HostApp;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				84E75E3A258039E7001F8290 /* HostApp */,
+				C0A1628C2BC1B28C00D5019E /* HostApp */,
 				OBJ_11 /* RukaTests */,
 			);
 			path = Tests;
@@ -190,6 +214,7 @@
 				841FE71C25803AF000CBB8BF /* Ruka.framework */,
 				841FE71D25803AF000CBB8BF /* RukaTests.xctest */,
 				C01EEAAB2908944300B0CE34 /* Frameworks */,
+				C0A1628B2BC1B28C00D5019E /* HostApp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +264,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C0A1628A2BC1B28C00D5019E /* HostApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0A1629C2BC1B28D00D5019E /* Build configuration list for PBXNativeTarget "HostApp" */;
+			buildPhases = (
+				C0A162872BC1B28C00D5019E /* Sources */,
+				C0A162882BC1B28C00D5019E /* Frameworks */,
+				C0A162892BC1B28C00D5019E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HostApp;
+			productName = HostApp;
+			productReference = C0A1628B2BC1B28C00D5019E /* HostApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 		"Ruka::Ruka" /* Ruka */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_26 /* Build configuration list for PBXNativeTarget "Ruka" */;
@@ -266,6 +308,7 @@
 			);
 			dependencies = (
 				OBJ_54 /* PBXTargetDependency */,
+				C0A162A42BC1B5B600D5019E /* PBXTargetDependency */,
 			);
 			name = RukaTests;
 			productName = RukaTests;
@@ -283,8 +326,11 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					C0A1628A2BC1B28C00D5019E = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					"Ruka::RukaTests" = {
-						TestTargetID = 84E75E38258039E7001F8290;
+						TestTargetID = C0A1628A2BC1B28C00D5019E;
 					};
 				};
 			};
@@ -303,11 +349,34 @@
 			targets = (
 				"Ruka::Ruka" /* Ruka */,
 				"Ruka::RukaTests" /* RukaTests */,
+				C0A1628A2BC1B28C00D5019E /* HostApp */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		C0A162892BC1B28C00D5019E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0A162A12BC1B4A000D5019E /* README.md in Resources */,
+				C0A162972BC1B28D00D5019E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		C0A162872BC1B28C00D5019E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0A1628E2BC1B28D00D5019E /* AppDelegate.swift in Sources */,
+				C0A162902BC1B28D00D5019E /* SceneDelegate.swift in Sources */,
+				C0A162A22BC1B4A000D5019E /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -359,6 +428,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C0A162A42BC1B5B600D5019E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0A1628A2BC1B28C00D5019E /* HostApp */;
+			targetProxy = C0A162A32BC1B5B600D5019E /* PBXContainerItemProxy */;
+		};
 		OBJ_54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Ruka::Ruka" /* Ruka */;
@@ -367,6 +441,81 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		C0A1629D2BC1B28D00D5019E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Tests/HostApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lemambo.HostApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		C0A1629E2BC1B28D00D5019E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Tests/HostApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lemambo.HostApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		OBJ_27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -389,9 +538,11 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TARGET_NAME = Ruka;
 			};
 			name = Debug;
@@ -418,9 +569,11 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TARGET_NAME = Ruka;
 			};
 			name = Release;
@@ -478,6 +631,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				USE_HEADERMAP = NO;
@@ -531,6 +685,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				USE_HEADERMAP = NO;
@@ -562,7 +717,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = RukaTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Host App.app/Host App";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HostApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HostApp";
 			};
 			name = Debug;
 		};
@@ -590,13 +745,22 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = RukaTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Host App.app/Host App";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HostApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HostApp";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C0A1629C2BC1B28D00D5019E /* Build configuration list for PBXNativeTarget "HostApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0A1629D2BC1B28D00D5019E /* Debug */,
+				C0A1629E2BC1B28D00D5019E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		OBJ_2 /* Build configuration list for PBXProject "Ruka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
