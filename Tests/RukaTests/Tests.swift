@@ -7,39 +7,51 @@ class Tests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         continueAfterFailure = false
-        window = getCurrentWindow()
+        getCurrentWindow()
     }
 
-    private func getCurrentWindow() -> UIWindow? {
-        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return nil }
-        return scene.windows.first(where: { $0.isKeyWindow })
+    private func getCurrentWindow() {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return
+        }
+        window = scene.windows.first(where: { $0.isKeyWindow })
+   }
+
+    func checkWindow() {
+        XCTAssertNotNil(self.window,
+                        "tests need a window")
     }
 
     func givenRootVC() {
+        checkWindow()
         let controller = RootViewController()
         app = App(window: window,
                   controller: controller)
     }
 
     func givenRootVCInNavC() {
+        checkWindow()
         let navigationController = UINavigationController(rootViewController: RootViewController())
         app = App(window: window,
                   controller: navigationController)
     }
 
     func givenFormVC() {
+        checkWindow()
         let controller = FormViewController()
         app = App(window: window,
                   controller: controller)
     }
 
     func givenTabBarVC() {
+        checkWindow()
         let controller = TabBarViewController()
         app = App(window: window,
                   controller: controller)
     }
 
     func givenTableVC() {
+        checkWindow()
         let controller = TableViewController()
         app = App(window: window,
                   controller: controller)
@@ -109,6 +121,7 @@ class Tests: XCTestCase {
     }
 
     func test_doesNotFindAButtonOffTheScreen() throws {
+        givenRootVC()
         XCTAssertNil(try window.button(RootViewController.offScreenButtonTitle,
                                        failureBehavior: .doNothing))
     }
