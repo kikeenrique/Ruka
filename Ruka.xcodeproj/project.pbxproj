@@ -19,6 +19,7 @@
 		C0A162972BC1B28D00D5019E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A162962BC1B28D00D5019E /* Assets.xcassets */; };
 		C0A162A12BC1B4A000D5019E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C0A1629F2BC1B4A000D5019E /* README.md */; };
 		C0A162A22BC1B4A000D5019E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A162A02BC1B4A000D5019E /* MainViewController.swift */; };
+		C0A162A62BC1C6F300D5019E /* UIView+debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A162A52BC1C6F300D5019E /* UIView+debug.swift */; };
 		C0D793712BB5C5A80084E4A3 /* WaitResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */; };
 		C0D793722BB5C5A80084E4A3 /* UISlider+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */; };
 		C0D793732BB5C5A80084E4A3 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */; };
@@ -86,6 +87,7 @@
 		C0A1629B2BC1B28D00D5019E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0A1629F2BC1B4A000D5019E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C0A162A02BC1B4A000D5019E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C0A162A52BC1C6F300D5019E /* UIView+debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+debug.swift"; sourceTree = "<group>"; };
 		C0D7935C2BB5C5A70084E4A3 /* WaitResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitResult.swift; sourceTree = "<group>"; };
 		C0D7935D2BB5C5A70084E4A3 /* UISlider+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ext.swift"; sourceTree = "<group>"; };
 		C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				C0D7936F2BB5C5A80084E4A3 /* UITableView+ext.swift */,
 				C0D793622BB5C5A80084E4A3 /* UITableViewCell+ext.swift */,
 				C0D7936B2BB5C5A80084E4A3 /* UITextField+ext.swift */,
+				C0A162A52BC1C6F300D5019E /* UIView+debug.swift */,
 				847AF242258982F100D81C33 /* UIView+Identifiable.swift */,
 				84146B132580386900A9768A /* UIView+SubviewFinder.swift */,
 				C0D7935E2BB5C5A70084E4A3 /* UIViewController+ext.swift */,
@@ -396,6 +399,7 @@
 				C0D793752BB5C5A80084E4A3 /* UILabel+ext.swift in Sources */,
 				C0D7937D2BB5C5A80084E4A3 /* XCTestCase+ext.swift in Sources */,
 				C0D7937B2BB5C5A80084E4A3 /* MainRunLoopActivityObserver.swift in Sources */,
+				C0A162A62BC1C6F300D5019E /* UIView+debug.swift in Sources */,
 				C0D7937E2BB5C5A80084E4A3 /* UIAlertController+ext.swift in Sources */,
 				C0D793812BB5C5A80084E4A3 /* XCUIElement+ext.swift in Sources */,
 				C0D7937F2BB5C5A80084E4A3 /* XCUIApplication+ext.swift in Sources */,
