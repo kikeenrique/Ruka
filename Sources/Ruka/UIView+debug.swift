@@ -49,10 +49,11 @@ extension UIView {
             printControlState(control)
         }
 
+#if !os(tvOS)
         if let datePicker = self as? UIDatePicker {
             printDatePickerState(datePicker)
         }
-
+#endif
         print("\n", terminator: "")
 
         printAccessibilityElements(indentation: indentation)
@@ -98,12 +99,14 @@ extension UIView {
         print(control.isHighlighted ? " (highlighted)" : " (not highlighted)", terminator: "")
     }
 
+    @available(tvOS, unavailable)
     private func printDatePickerState(_ datePicker: UIDatePicker) {
         print(" (date range: \(datePicker.minimumDate?.description ?? "no minimum") - \(datePicker.maximumDate?.description ?? "no maximum"))", terminator: "")
         print(" (mode: \(datePickerModeString(datePicker.datePickerMode)))", terminator: "")
         print(" (minute interval: \(datePicker.minuteInterval))", terminator: "")
     }
 
+    @available(tvOS, unavailable)
     private func datePickerModeString(_ mode: UIDatePicker.Mode) -> String {
         switch mode {
         case .time:
