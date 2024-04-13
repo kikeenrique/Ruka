@@ -117,10 +117,13 @@ extension UIView {
             return "DateAndTime"
         case .countDownTimer:
             return "CountDownTimer"
-        case .yearAndMonth:
-            return "yearAndMonth"
-        @unknown default:
-            return "Unknown"
+        default:
+            // Using reflection to check if `mode` is `yearAndMonth` when running on newer iOS versions
+            if #available(iOS 17.4, *), mode == UIDatePicker.Mode(rawValue: 5) {
+                return "YearAndMonth"
+            } else {
+                return "Unknown"
+            }
         }
     }
 
