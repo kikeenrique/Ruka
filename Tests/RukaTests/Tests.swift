@@ -18,6 +18,15 @@ class Tests: XCTestCase {
         self.app = nil
         self.window.rootViewController = nil
     }
+
+    func waitABit() {
+        let expectation = XCTestExpectation(description: "Wait for x seconds")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1) // Add a buffer to the timeout to ensure it doesn't expire too early
+    }
+
     private func getCurrentWindow() {
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return
