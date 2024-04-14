@@ -9,8 +9,15 @@ class Tests: XCTestCase {
         continueAfterFailure = false
         executionTimeAllowance = 1
         getCurrentWindow()
+        self.window.rootViewController = nil
+        waitForAnimationsToFinish(window: window)
     }
 
+    override func tearDownWithError() throws {
+        try super.tearDownWithError()
+        self.app = nil
+        self.window.rootViewController = nil
+    }
     private func getCurrentWindow() {
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return
@@ -159,9 +166,11 @@ class Tests: XCTestCase {
         givenRootVCInNavC()
 
         try window.tapButton(title: RootViewController.pushText)
+        waitForAnimationsToFinish(window: window)
         XCTAssertEqual((app.controller as? UINavigationController)?.viewControllers.count, 2)
 
         try window.tapButton(title: RootViewController.popText)
+        waitForAnimationsToFinish(window: window)
         XCTAssertEqual((app.controller as? UINavigationController)?.viewControllers.count, 1)
     }
 
@@ -191,6 +200,8 @@ class Tests: XCTestCase {
         // tap dismiss button
         try window.tapButton(title: ModalViewController.dismissText)
 
+        waitForAnimationsToFinish(window: window)
+
         // check missing button dismiss
         XCTAssertNil(try window.button(ModalViewController.dismissText,
                                        failureBehavior: .doNothing))
@@ -217,6 +228,7 @@ class Tests: XCTestCase {
                                           failureBehavior: .doNothing))
 
         try window.tapButton(title: ModalViewController.dismissText)
+        waitForAnimationsToFinish(window: window)
         XCTAssertNil(try window.button(ModalViewController.dismissText,
                                        failureBehavior: .doNothing))
     }
@@ -233,10 +245,10 @@ class Tests: XCTestCase {
             let controller = (app.controller as? TabBarViewController)?.secondTabViewController
             return controller?.isVisible ?? true
         }
+        waitForAnimationsToFinish(window: window)
         XCTAssertNotNil(try window.button(SecondTabViewController.presentText,
                                           failureBehavior: .doNothing))
         try window.tapButton(title: SecondTabViewController.presentText)
-
         XCTAssertNotNil((app.controller as? TabBarViewController)?.secondTabViewController.presentedViewController)
     }
 
