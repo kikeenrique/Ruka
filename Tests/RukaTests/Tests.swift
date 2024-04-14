@@ -2,7 +2,7 @@ import Ruka
 import XCTest
 
 class Tests: XCTestCase {
-    var window: UIWindow!
+    weak var window: UIWindow!
     var app: App!
     override func setUpWithError() throws {
         try super.setUpWithError()

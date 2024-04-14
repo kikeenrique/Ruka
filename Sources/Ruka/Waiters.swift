@@ -85,15 +85,7 @@ extension WaitersProtocol {
         var result: WaitResult = .wait
 
         while (getAbsoluteTimeMs() - startedAt) < timeoutMs {
-            result = block()
-
-            if result == .success {
-                successBlock?()
-                break
-            }
-
-            CFRunLoopRunInMode(CFRunLoopMode.defaultMode, 0.1, false)
-
+            CFRunLoopRunInMode(CFRunLoopMode.defaultMode, 0.05, false)
             result = block()
 
             if result == .success {

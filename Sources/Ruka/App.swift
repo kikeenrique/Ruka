@@ -50,7 +50,7 @@ public struct App {
 
     // MARK: Private
 
-    private let window: UIWindow!
+    private weak var window: UIWindow!
     public let controller: UIViewController!
     private var rootViewControllerVisible: UIViewController! {
         window.rootViewController?.visibleViewController
