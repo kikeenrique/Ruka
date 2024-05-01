@@ -7,6 +7,7 @@
 
 import Foundation
 import XCTest
+import os.log
 
 public protocol WaitersProtocol {
     func waitForAnimationsToFinish(window: UIWindow,
@@ -80,22 +81,29 @@ extension WaitersProtocol {
                            line: UInt = #line,
                            block: () -> WaitResult,
                            successBlock: (() -> Void)? = nil) {
+        let logger = Logger(subsystem: "App", category: "App")
+        logger.debug("looping begin")
         let timeoutMs = UInt(timeout * 1000)
         let startedAt = getAbsoluteTimeMs()
         var result: WaitResult = .wait
 
         while (getAbsoluteTimeMs() - startedAt) < timeoutMs {
+            logger.debug("looping CFRunLoopRunInMode")
             CFRunLoopRunInMode(CFRunLoopMode.defaultMode, 0.05, false)
             result = block()
-
             if result == .success {
+                logger.debug("looping success")
                 successBlock?()
                 break
+            } else {
+                logger.debug("looping failed")
             }
         }
 
         if timeoutCondition == .fail, result == .wait {
+            logger.debug("looping fail")
             XCTFail("\(message)", file: file, line: line)
         }
+        logger.debug("looping end")
     }
 }

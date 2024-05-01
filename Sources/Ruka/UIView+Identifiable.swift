@@ -12,6 +12,7 @@ import UIKit
 #if canImport(AppKit)
 import AppKit
 #endif
+import os.log
 
 extension UIView {
     func isIdentifiable(by identifier: String, 
@@ -21,6 +22,14 @@ extension UIView {
             accessibilityLabel == identifier ||
             accessibilityIdentifier == identifier
         let found = identifiable && !isHidden && frame.intersects(controller.view.bounds)
+        if found {
+            let logger = Logger(subsystem: "App", category: "App")
+            if isHidden {
+                logger.debug("\(#function) identifier:\"\(identifier)\", isHidden🫣")
+            } else {
+                logger.debug("\(#function) identifier:\"\(identifier)\" 👀")
+            }
+        }
         return found
     }
 }

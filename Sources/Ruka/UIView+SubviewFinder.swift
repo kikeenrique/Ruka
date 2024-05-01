@@ -12,6 +12,7 @@ import UIKit
 #if canImport(AppKit)
 import AppKit
 #endif
+import os.log
 
 extension UIView {
     func findViews<T: UIView>(subclassOf: T.Type) -> [T] {
@@ -58,16 +59,21 @@ extension UIView {
 
         for tapPoint in pointsToTest {
             if let hitView = window.hitTest(tapPoint, with: nil){
+                let logger = Logger(subsystem: "App", category: "App")
                 if hitView === self {
+                    logger.debug("\(#function) hitView tapPoint(x:\(tapPoint.x), y:\(tapPoint.y)) 🙋")
                     return window.convert(tapPoint, to: self)
                 } else {
                     if hitView.isDescendant(of: self) {
+                        logger.debug("\(#function) hitView tapPoint(x:\(tapPoint.x), y:\(tapPoint.y)) 🧑‍🧒")
                         return window.convert(tapPoint, to: self)
                     } else {
                         if hitView === self.superview {
                             // this can happend is view is a uicontrol that is disabled
+                            logger.debug("\(#function) hitView tapPoint(x:\(tapPoint.x), y:\(tapPoint.y)) 🧓")
                             return window.convert(tapPoint, to: self)
                         } else {
+                            logger.debug("\(#function) hitView tapPoint(x:\(tapPoint.x), y:\(tapPoint.y)) 😅")
                         }
                     }
                 }
