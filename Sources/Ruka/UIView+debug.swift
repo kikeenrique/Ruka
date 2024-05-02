@@ -38,7 +38,7 @@ extension UIView {
         if isTappable() {
             print(" (🫵)", terminator: "")
         } else {
-            print(" (🖕)", terminator: "")
+            print(" (🫵🚫)", terminator: "")
         }
 
         if let imageView = self as? UIImageView {
@@ -81,11 +81,11 @@ extension UIView {
 
     private func printAccessibilityInfo() {
         if let label = accessibilityLabel {
-            print(", label: \(label)", terminator: "")
+            print(", ♿️label: \(label)", terminator: "")
         }
 
         if let identifier = accessibilityIdentifier {
-            print(", identifier: \(identifier)", terminator: "")
+            print(", ♿️identifier: \(identifier)", terminator: "")
         }
     }
 
