@@ -59,7 +59,7 @@ extension UIView {
 
         for tapPoint in pointsToTest {
             if let hitView = window.hitTest(tapPoint, with: nil){
-                let logger = Logger(subsystem: "App", category: "App")
+                let logger = Logger(subsystem: "App", category: "tappablePoint")
                 if hitView === self {
                     logger.debug("\(#function) hitView tapPoint(x:\(tapPoint.x), y:\(tapPoint.y)) 🙋")
                     return window.convert(tapPoint, to: self)

@@ -7,103 +7,96 @@
 
 import Foundation
 import UIKit
+import os.log
 
 extension UIView {
+    static let log = Logger(subsystem: "App", category: "App")
+
     static func printViewHierarchy() {
+        var logBuffer = ""
         let windows = UIApplication.shared.windows
-        print("windows:\(windows.count)")
+        logBuffer.append("windows:\(windows.count)\n")
         if windows.count == 1 {
-            windows.first?.printViewHierarchy()
+            if let window = windows.first {
+                window.printViewHierarchy(&logBuffer)
+            }
         } else {
             for window in windows {
-                print("Window level \(window.windowLevel)", terminator: window.isKeyWindow ? " (key window)\n" : "\n")
-                window.printViewHierarchy()
-                print("\n")
+                let windowLevelString = window.isKeyWindow ? " (key window)" : ""
+                logBuffer.append("Window level \(window.windowLevel.rawValue)\(windowLevelString)\n")
+                window.printViewHierarchy(&logBuffer)
+                logBuffer.append("\n")
             }
         }
+        log.debug("\(logBuffer)")
     }
 
-    func printViewHierarchy(indentation: Int = 0) {
-        printIndentation(indentation)
-        printClassName()
-        printViewDetails()
-        printAccessibilityInfo()
+    func printViewHierarchy(_ logBuffer: inout String, indentation: Int = 0) {
+        appendIndentation(&logBuffer, indentation)
+        printClassName(&logBuffer)
+        printViewDetails(&logBuffer)
+        printAccessibilityInfo(&logBuffer)
 
-        if isHidden {
-            print(" (👻)", terminator: "")
-        } else {
-            print(" (👀)", terminator: "")
-        }
-
-        if isTappable() {
-            print(" (🫵)", terminator: "")
-        } else {
-            print(" (🫵🚫)", terminator: "")
-        }
+        logBuffer.append(isHidden ? " (👻)" : " (👀)")
+        logBuffer.append(isTappable() ? " (🫵)" : " (🫵🚫)")
 
         if let imageView = self as? UIImageView {
-            printImageHighlightedState(imageView)
+            logBuffer.append(imageView.isHighlighted ? " (highlighted)" : " (not highlighted)")
         }
 
         if let control = self as? UIControl {
-            printControlState(control)
+            logBuffer.append(control.isEnabled ? " (enabled)" : " (not enabled)")
+            logBuffer.append(control.isSelected ? " (selected)" : " (not selected)")
+            logBuffer.append(control.isHighlighted ? " (highlighted)" : " (not highlighted)")
         }
 
 #if !os(tvOS)
         if let datePicker = self as? UIDatePicker {
-            printDatePickerState(datePicker)
+            printDatePickerState(datePicker, &logBuffer)
         }
 #endif
-        print("\n", terminator: "")
+        if !logBuffer.isEmpty {
+            logBuffer.append("\n")
+        }
 
-        printAccessibilityElements(indentation: indentation)
+        printAccessibilityElements(&logBuffer, indentation: indentation)
 
         guard !isKind(of: NSClassFromString("_UIDatePickerView")!) else {
             return
         }
 
         for subview in subviews {
-            subview.printViewHierarchy(indentation: indentation + 1)
+            subview.printViewHierarchy(&logBuffer, indentation: indentation + 1)
         }
     }
 
-    private func printIndentation(_ indent: Int) {
+    private func appendIndentation(_ logBuffer: inout String, _ indent: Int) {
         for _ in 0..<indent {
-            print("|\t", terminator: "")
+            logBuffer.append("|\t")
         }
     }
 
-    private func printClassName() {
+    private func printClassName(_ logBuffer: inout String) {
         let className = String(describing: type(of: self))
         let address = Unmanaged.passUnretained(self).toOpaque()
-        print("\(className) \(address)", terminator: "")
+        logBuffer.append("\(className) \(address)")
     }
 
-    private func printAccessibilityInfo() {
+    private func printAccessibilityInfo(_ logBuffer: inout String) {
         if let label = accessibilityLabel {
-            print(", ♿️label: \(label)", terminator: "")
+            logBuffer.append(", ♿️label: \(label)")
         }
 
         if let identifier = accessibilityIdentifier {
-            print(", ♿️identifier: \(identifier)", terminator: "")
+            logBuffer.append(", ♿️identifier: \(identifier)")
         }
     }
 
-    private func printImageHighlightedState(_ imageView: UIImageView) {
-        print(imageView.isHighlighted ? " (highlighted)" : " (not highlighted)", terminator: "")
-    }
-
-    private func printControlState(_ control: UIControl) {
-        print(control.isEnabled ? " (enabled)" : " (not enabled)", terminator: "")
-        print(control.isSelected ? " (selected)" : " (not selected)", terminator: "")
-        print(control.isHighlighted ? " (highlighted)" : " (not highlighted)", terminator: "")
-    }
-
     @available(tvOS, unavailable)
-    private func printDatePickerState(_ datePicker: UIDatePicker) {
-        print(" (date range: \(datePicker.minimumDate?.description ?? "no minimum") - \(datePicker.maximumDate?.description ?? "no maximum"))", terminator: "")
-        print(" (mode: \(datePickerModeString(datePicker.datePickerMode)))", terminator: "")
-        print(" (minute interval: \(datePicker.minuteInterval))", terminator: "")
+    private func printDatePickerState(_ datePicker: UIDatePicker, _ logBuffer: inout String) {
+        logBuffer.append(" (date range: \(datePicker.minimumDate?.description ?? "no minimum") - \(datePicker.maximumDate?.description ?? "no maximum"))")
+        logBuffer.append(" (mode: \(datePickerModeString(datePicker.datePickerMode)))")
+        logBuffer.append(" (minute interval: \(datePicker.minuteInterval))")
     }
 
     @available(tvOS, unavailable)
@@ -127,31 +120,31 @@ extension UIView {
         }
     }
 
-    private func printAccessibilityElements(indentation: Int) {
+    private func printAccessibilityElements(_ logBuffer: inout String, indentation: Int) {
         let elementCount = accessibilityElementCount()
         if elementCount != NSNotFound {
             for index in 0..<elementCount {
                 guard let element = accessibilityElement(at: index) as? UIAccessibilityElement else { continue }
-                printIndentation(indentation)
-                print("\(type(of: element)), label: \(element.accessibilityLabel ?? "")", terminator: "")
+                appendIndentation(&logBuffer, indentation)
+                logBuffer.append("\(type(of: element)), label: \(element.accessibilityLabel ?? "")")
                 if let value = element.accessibilityValue {
-                    print(", value: \(value)", terminator: "")
+                    logBuffer.append(", value: \(value)")
                 }
                 if let hint = element.accessibilityHint {
-                    print(", hint: \(hint)", terminator: "")
+                    logBuffer.append(", hint: \(hint)")
                 }
-                printAccessibilityTraits(element.accessibilityTraits)
-                print("")
+                printAccessibilityTraits(&logBuffer, element.accessibilityTraits)
+                logBuffer.append("\n")
             }
         }
     }
 
-    private func printAccessibilityTraits(_ traits: UIAccessibilityTraits) {
-        print("traits: ", terminator: "")
+    private func printAccessibilityTraits(_ logBuffer: inout String, _ traits: UIAccessibilityTraits) {
+        logBuffer.append("traits: ")
         var didPrintOne = false
 
         func printTrait(_ trait: String) {
-            print(didPrintOne ? ", \(trait)" : trait, terminator: "")
+            logBuffer.append(didPrintOne ? ", \(trait)" : trait)
             didPrintOne = true
         }
 
@@ -164,18 +157,15 @@ extension UIView {
         // Add more traits as needed
 
         if !didPrintOne {
-            print("unknown flags (\(traits))", terminator: "")
+            logBuffer.append("unknown flags (\(traits))")
         }
     }
 
-    private func printViewDetails() {
-        // Print frame
+    private func printViewDetails(_ logBuffer: inout String) {
         let formattedOrigin = String(format: "(x:%.1f, y:%.1f)", frame.origin.x, frame.origin.y)
         let formattedSize = String(format: "(W:%.1f, H:%.1f)", frame.size.width, frame.size.height)
 
-        // Print formatted frame
-        print(" F:\(formattedOrigin)-\(formattedSize)", terminator: "")
-        // Print user interaction status
-        print(", \(isUserInteractionEnabled ? "interaction ✅" : "interaction ❌")", terminator: "")
+        logBuffer.append(" F:\(formattedOrigin)-\(formattedSize)")
+        logBuffer.append(isUserInteractionEnabled ? ", interaction ✅" : ", interaction ❌")
     }
 }

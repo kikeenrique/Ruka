@@ -1,9 +1,12 @@
 import Ruka
 import XCTest
+import os.log
 
 class Tests: XCTestCase {
     weak var window: UIWindow!
     var app: App!
+    let logger = Logger(subsystem: "App", category: "App")
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         continueAfterFailure = false

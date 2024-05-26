@@ -108,3 +108,151 @@ extension CALayer {
         return false
     }
 }
+
+extension CAMediaTimingFillMode: CustomStringConvertible {
+    public var description: String {
+        return debugDescription
+    }
+    
+    public var debugDescription: String {
+        switch self {
+        case .backwards: 
+            return "backwards"
+        case .forwards:
+            return "forwards"
+        case .both:
+            return "both"
+        case .removed:
+            return "removed"
+        default:
+            return "unknown"
+        }
+    }
+}
+
+extension CALayer {
+    public override var description: String {
+        return debugDescription
+    }
+
+    public override var debugDescription: String {
+        return """
+        CALayer:
+          - beginTime: \(beginTime)
+          - duration: \(duration)
+          - speed: \(speed) - currentSpeed: \(currentSpeed)
+          - timeOffset: \(timeOffset)
+          - repeatCount: \(repeatCount)
+          - repeatDuration: \(repeatDuration)
+          - autoreverses: \(autoreverses)
+          - fillMode: \(fillMode)
+          - frame: \(frame)
+          - bounds: \(bounds)
+          - position: \(position)
+          - anchorPoint: \(anchorPoint)
+          - zPosition: \(zPosition)
+          - transform: \(transform)
+          - opacity: \(opacity)
+          - isHidden: \(isHidden)
+          - cornerRadius: \(cornerRadius)
+          - borderWidth: \(borderWidth)
+          - borderColor: \(String(describing: borderColor))
+          - backgroundColor: \(String(describing: backgroundColor))
+          - shadowOpacity: \(shadowOpacity)
+          - shadowRadius: \(shadowRadius)
+          - shadowOffset: \(shadowOffset)
+          - shadowColor: \(String(describing: shadowColor))
+          - masksToBounds: \(masksToBounds)
+          - sublayers count: \(sublayers?.count ?? 0)
+          - isDoubleSided: \(isDoubleSided)
+          - contents: \(String(describing: contents))
+          - contentsRect: \(contentsRect)
+          - contentsGravity: \(contentsGravity.rawValue)
+          - contentsScale: \(contentsScale)
+          - isOpaque: \(isOpaque)
+        """
+    }
+}
+
+
+/// CAAnimation
+/// ├── CAPropertyAnimation
+/// │   ├── CABasicAnimation
+/// │   ├── CAKeyframeAnimation
+/// │   └── CASpringAnimation
+/// ├── CATransition
+/// └── CAAnimationGroup
+
+extension CAAnimation {
+    public override var description: String {
+        return debugDescription
+    }
+
+    public override var debugDescription: String {
+        return """
+        CAAnimation: \(type(of: self))
+          - beginTime: \(beginTime)
+          - duration: \(duration)
+          - completion: \(completionTime)
+          - speed: \(speed)
+          - timeOffset: \(timeOffset)
+          - repeatCount: \(repeatCount)
+          - repeatDuration: \(repeatDuration)
+          - autoreverses: \(autoreverses)
+          - fillMode: \(fillMode.rawValue)
+          - timingFunction: \(timingFunction?.description ?? "nil")
+          - isRemovedOnCompletion: \(isRemovedOnCompletion)
+        """
+    }
+}
+
+extension CABasicAnimation {
+    override public var debugDescription: String {
+        return """
+        CABasicAnimation: \(type(of: self)):
+          - keyPath: \(String(describing: keyPath))
+          - fromValue: \(String(describing: fromValue))
+          - toValue: \(String(describing: toValue))
+          - byValue: \(String(describing: byValue))
+          \(super.debugDescription)
+        """
+    }
+}
+
+extension CAKeyframeAnimation {
+    override public var debugDescription: String {
+        return """
+        CAKeyframeAnimation: \(type(of: self)):
+          - keyPath: \(String(describing: keyPath))
+          - values: \(String(describing: values))
+          - keyTimes: \(String(describing: keyTimes))
+          - timingFunctions: \(String(describing: timingFunctions))
+          - calculationMode: \(calculationMode.rawValue)
+          \(super.debugDescription)
+        """
+    }
+}
+
+extension CASpringAnimation {
+    override public var debugDescription: String {
+        return """
+        CASpringAnimation: \(type(of: self)):
+          - keyPath: \(String(describing: keyPath))
+          - mass: \(mass)
+          - stiffness: \(stiffness)
+          - damping: \(damping)
+          - initialVelocity: \(initialVelocity)
+          \(super.debugDescription)
+        """
+    }
+}
+
+extension CAAnimationGroup {
+    override public var debugDescription: String {
+        return """
+        CAAnimationGroup: \(type(of: self)):
+          - animations: \(String(describing: animations))
+          \(super.debugDescription)
+        """
+    }
+}
