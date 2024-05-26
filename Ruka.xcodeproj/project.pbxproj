@@ -14,6 +14,7 @@
 		847AF243258982F100D81C33 /* UIView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF242258982F100D81C33 /* UIView+Identifiable.swift */; };
 		C01856B42BB736DA000C8B26 /* UIWindow+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */; };
 		C01EEAAD2908944400B0CE34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01EEAAC2908944400B0CE34 /* XCTest.framework */; };
+		C088EE3F2BE415F000EF9B53 /* UIWindow+animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EE3E2BE415F000EF9B53 /* UIWindow+animations.swift */; };
 		C0A1628E2BC1B28D00D5019E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A1628D2BC1B28C00D5019E /* AppDelegate.swift */; };
 		C0A162902BC1B28D00D5019E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A1628F2BC1B28D00D5019E /* SceneDelegate.swift */; };
 		C0A162972BC1B28D00D5019E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A162962BC1B28D00D5019E /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		847AF242258982F100D81C33 /* UIView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifiable.swift"; sourceTree = "<group>"; };
 		C01856B32BB736DA000C8B26 /* UIWindow+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+ext.swift"; sourceTree = "<group>"; };
 		C01EEAAC2908944400B0CE34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C088EE3E2BE415F000EF9B53 /* UIWindow+animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+animations.swift"; sourceTree = "<group>"; };
 		C0A1625E2BC14FCE00D5019E /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
 		C0A1628B2BC1B28C00D5019E /* HostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A1628D2BC1B28C00D5019E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				C0D7936C2BB5C5A80084E4A3 /* XCUIElement+ext.swift */,
 				C0D7936D2BB5C5A80084E4A3 /* XCUIElementQuery+ext.swift */,
 				C0A162AA2BCC946F00D5019E /* CAAnimation+ext.swift */,
+				C088EE3E2BE415F000EF9B53 /* UIWindow+animations.swift */,
 			);
 			path = Ruka;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				C0D793762BB5C5A80084E4A3 /* WaitersConcurrency.swift in Sources */,
 				847AF23225897D8200D81C33 /* Identifiable.swift in Sources */,
 				C01856B42BB736DA000C8B26 /* UIWindow+ext.swift in Sources */,
+				C088EE3F2BE415F000EF9B53 /* UIWindow+animations.swift in Sources */,
 				C0D793852BB5C5A80084E4A3 /* UIButton+ext.swift in Sources */,
 				C0D793732BB5C5A80084E4A3 /* UIViewController+ext.swift in Sources */,
 				C0D793822BB5C5A80084E4A3 /* XCUIElementQuery+ext.swift in Sources */,
