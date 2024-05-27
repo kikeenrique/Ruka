@@ -257,15 +257,31 @@ extension CAKeyframeAnimation {
 
 extension CASpringAnimation {
     override public var debugDescription: String {
-        return """
+        var description = """
         CASpringAnimation: \(type(of: self)):
           - keyPath: \(String(describing: keyPath))
           - mass: \(mass)
           - stiffness: \(stiffness)
           - damping: \(damping)
           - initialVelocity: \(initialVelocity)
+          - settlingDuration: \(settlingDuration)
+        """
+
+        if #available(iOS 17.0, tvOS 17.0, *) {
+            description += """
+
+              - allowsOverdamping: \(allowsOverdamping)
+              - perceptualDuration: \(perceptualDuration)
+              - bounce: \(bounce)
+            """
+        }
+
+        description += """
+          
           \(super.debugDescription)
         """
+
+        return description
     }
 }
 
