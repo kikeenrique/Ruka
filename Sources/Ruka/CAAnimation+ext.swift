@@ -17,8 +17,10 @@ extension CAAnimation {
     var completionTime: Double {
         if self.repeatDuration > 0 {
             return self.beginTime + self.repeatDuration
-        } else if self.repeatCount == Float.infinity {
-            return Double.infinity
+        } else if self.duration == Double.infinity {
+            return Double.greatestFiniteMagnitude
+        } else if self.repeatCount == Float.greatestFiniteMagnitude {
+            return Double.greatestFiniteMagnitude
         } else if self.repeatCount > 0 {
             return self.beginTime + (Double(self.repeatCount) * self.duration)
         } else {

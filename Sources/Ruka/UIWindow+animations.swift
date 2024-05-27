@@ -17,7 +17,7 @@ extension UIWindow {
         if views.isEmpty {
             animations = false
         } else {
-            animations = views.allSatisfy { view in
+            animations = views.contains { view in
                 if view.layer.hasFiniteAnimations(logged: true) {
                     return true
                 } else {

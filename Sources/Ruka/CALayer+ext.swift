@@ -54,12 +54,13 @@ extension CALayer {
 
     func hasFiniteAnimationsNotLogged() -> Bool {
         let logger = Logger(subsystem: "App", category: "App")
-        var animations = self.hasFiniteAnimations()
+//        let animations = self.hasFiniteAnimations()
+        let animations = false
 
-        self.sublayers?.forEach { sublayer in
-            if animations { return } // Exit if animations already found
-            animations = sublayer.hasFiniteAnimations()
-        }
+//        self.sublayers?.forEach { sublayer in
+//            if animations { return } // Exit if animations already found
+//            animations = sublayer.hasFiniteAnimations()
+//        }
         logger.debug("\(#function) animating:->\(animations)")
         return animations
     }
@@ -67,18 +68,19 @@ extension CALayer {
     func checkLayerForAnimations(layer: CALayer,
                                  animationsDictionary: inout [String: String],
                                  howManyAnimating: inout Int) {
-        if layer.hasFiniteAnimations(),
-           let animationKeys = layer.animationKeys() {
-            animationsDictionary[String(describing: layer)] = animationKeys.joined(separator: ",")
-            howManyAnimating += 1
-        }
+        layer.hasFiniteAnimations(animationsDictionary: &animationsDictionary,
+                                  howManyAnimating: &howManyAnimating)
     }
 
-    func hasFiniteAnimations() -> Bool {
-        return !hasInfiniteAnimations()
+    @discardableResult
+    func hasFiniteAnimations(animationsDictionary: inout [String: String],
+                             howManyAnimating: inout Int) -> Bool {
+        return !hasInfiniteAnimations(animationsDictionary: &animationsDictionary,
+                                      howManyAnimating: &howManyAnimating)
     }
 
-    private func hasInfiniteAnimations() -> Bool {
+    private func hasInfiniteAnimations(animationsDictionary: inout [String: String],
+                                       howManyAnimating: inout Int) -> Bool {
         // Skip checking hidden layers and their descendants
         guard !self.isHidden else {
             return false
@@ -87,22 +89,42 @@ extension CALayer {
         // Check animations on the current layer
         if let animationKeys = self.animationKeys(),
            !animationKeys.isEmpty {
-            if animationKeys.contains(where: isAnimationInfinite) {
+            if animationKeys.contains(where: {isAnimationInfinite(animationKey: $0,
+                                                                  animationsDictionary: &animationsDictionary,
+                                                                  howManyAnimating: &howManyAnimating)}) {
                 return true
             }
         }
         return false
     }
 
-    func isAnimationInfinite(animationKey: String) -> Bool {
-        if let animation = self.animation(forKey: animationKey) {
-            let beginTime = animation.beginTime
-            let completionTime = animation.completionTime
-            let currentTime = CACurrentMediaTime() * Double(self.currentSpeed)
-            if currentTime >= beginTime,
-               completionTime != Double.infinity,
-               currentTime < completionTime {
+    func isAnimationInfinite(animationKey: String,
+                             animationsDictionary: inout [String: String],
+                             howManyAnimating: inout Int) -> Bool {
+        if let animation = self.animation(forKey: animationKey),
+           let propertyAnimation = animation as? CAPropertyAnimation {
+            let beginTime = propertyAnimation.beginTime
+            let completionTime = propertyAnimation.completionTime
+            let absoluteTime = CACurrentMediaTime()
+            let currentTime = convertTime(absoluteTime, to: self)
+            if completionTime == Double.greatestFiniteMagnitude {
+                animationsDictionary[String(describing: self)] = "♾️" + animationKey
                 return true
+            } else if currentTime >= beginTime,
+                      currentTime < completionTime {
+                animationsDictionary[String(describing: self)] = animationKey
+                howManyAnimating += 1
+                return false
+            } else {
+                animationsDictionary[String(describing: self)] = "🤪" + animationKey
+                switch propertyAnimation.fillMode {
+                case .removed:
+                    howManyAnimating += 1
+                default:
+                    ()
+//                    howManyAnimating += 1
+                }
+                return false
             }
         }
         return false
